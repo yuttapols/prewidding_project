@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
   brideName     = 'นางสาวลภัสรดา ขุมทอง';
   brideNickname = 'แอน';
 
-  groomFamily = ['นาง ธมนวรรณ อำพนสุวรรณ', 'นางสาว จิ๋น อำพนสุวรรณ'];
+  groomFamily = ['นางสาว จิ๋น อำพนสุวรรณ', 'นาง ธมนวรรณ อำพนสุวรรณ'];
   brideFamily = ['นางอุบล ขุมทอง', 'นายนิคม ขุมทอง'];
 
   weddingDate   = 'วันศุกร์ที่ 10 กรกฎาคม พ.ศ. 2569';
@@ -100,6 +100,10 @@ export class AppComponent implements OnInit, OnDestroy {
   goToSlide(i: number) { this.currentSlide = i; }
 
   preWeddingPhotos = ['assets/new3.jpg', 'assets/new5.jpg', 'assets/new7.jpg'];
+
+  lightboxSrc: string | null = null;
+  openLightbox(src: string) { this.lightboxSrc = src; }
+  closeLightbox() { this.lightboxSrc = null; }
 
   // ── Lifecycle ─────────────────────────────────────────────
   ngOnInit() {

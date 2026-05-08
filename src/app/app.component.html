@@ -386,15 +386,6 @@
           <span class="color-name">{{ c.name }}</span>
         </div>
       </div>
-      <div class="dress-rules">
-        <div class="dress-rule">
-          <span class="rule-icon">👗</span>
-          <div>
-            <strong>ชุดไทย / ชุดราตรี / ชุดสุภาพ</strong>
-            <p>ธีมสีงาน: แดง &amp; ขาว</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -540,13 +531,15 @@
     <div class="prewedding-grid">
       <div *ngFor="let p of preWeddingPhotos; let i = index"
            class="prewedding-card"
-           [style.animation-delay]="i * 0.18 + 's'">
+           [style.animation-delay]="i * 0.18 + 's'"
+           (click)="openLightbox(p)">
         <img [src]="p" [alt]="'Pre-wedding ' + (i+1)" class="prewedding-img"/>
         <div class="prewedding-overlay">
-          <span class="prewedding-heart">♥</span>
+          <span class="prewedding-zoom">🔍</span>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- ── SECTION 9: SLIDESHOW ── -->
@@ -585,11 +578,17 @@
   <!-- ── FOOTER ── -->
   <footer class="wedding-footer">
     <div class="footer-ornament">❧ ♥ ❧</div>
-    <p class="footer-quote">" รักแท้นั้น ยั่งยืนนาน "</p>
+    <p class="footer-quote">" ขอบคุณทุกท่าน ที่มาร่วมงานมงคลสมรส "</p>
     <p class="footer-names">{{ groomNickname }} &amp; {{ brideNickname }} · 10.07.2569</p>
     <div class="footer-ornament">✦ ✦ ✦</div>
   </footer>
 
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" *ngIf="lightboxSrc" (click)="closeLightbox()">
+  <button class="lightbox-close" (click)="closeLightbox()">✕</button>
+  <img [src]="lightboxSrc" class="lightbox-img" (click)="$event.stopPropagation()"/>
 </div>
 
 <!-- ── FIXED MUSIC BUTTON ── -->
