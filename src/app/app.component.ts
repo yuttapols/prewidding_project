@@ -16,14 +16,21 @@ export class AppComponent implements OnInit, OnDestroy {
   // ── Envelope ──────────────────────────────────────────────
   envelopeState: 'closed' | 'opening' | 'breathing' = 'closed';
   showInvitation = false;
+  showRevealText = false;
 
   openEnvelope() {
     if (this.envelopeState !== 'closed') return;
     this.envelopeState = 'opening';
     setTimeout(() => {
+      this.showRevealText = true;
+      this.cdr.detectChanges();
+    }, 3000);
+    setTimeout(() => {
+      this.showRevealText = false;
       this.envelopeState = 'breathing';
       this.showInvitation = true;
-    }, 2800);
+      this.cdr.detectChanges();
+    }, 6000);
   }
 
   // ── Couple info ───────────────────────────────────────────

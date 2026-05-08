@@ -244,6 +244,13 @@
     <i class="pi pi-hand-pointer"></i>
     กดที่ซองจดหมายเพื่อเปิดการ์ดเชิญ
   </p>
+
+  <!-- ── Reveal text ── -->
+  <div class="reveal-overlay" [class.visible]="showRevealText">
+    <div class="reveal-ornament">✦ ♥ ✦</div>
+    <h2 class="reveal-main-text">แต่งแล้วเด้อ!</h2>
+    <p class="reveal-couple">{{ groomNickname }} ♥ {{ brideNickname }}</p>
+  </div>
 </div>
 
 <!-- ===================== BREATHING SCREEN ===================== -->

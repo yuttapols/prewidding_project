@@ -874,6 +874,56 @@ $text:   #3d2b1f;
 .breath-sub { animation:letter-breathe 3s ease-in-out infinite; }
 
 // ══════════════════════════════════════════════════════════════
+//  REVEAL TEXT OVERLAY ("แต่งแล้วเด้อ")
+// ══════════════════════════════════════════════════════════════
+.reveal-overlay {
+  position: absolute; inset: 0; z-index: 60;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; pointer-events: none;
+  background: rgba(253, 246, 236, 0.97);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+
+    .reveal-main-text {
+      animation: reveal-pop 0.65s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+    .reveal-ornament {
+      animation: reveal-pop 0.55s cubic-bezier(.34, 1.56, .64, 1) 0.1s both;
+    }
+    .reveal-couple {
+      animation: reveal-pop 0.55s cubic-bezier(.34, 1.56, .64, 1) 0.22s both;
+    }
+  }
+}
+
+.reveal-ornament {
+  font-size: 1.1rem; color: $gold; letter-spacing: 10px;
+  opacity: 0;
+}
+.reveal-main-text {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: clamp(2.6rem, 11vw, 5rem);
+  color: $red; font-weight: 700; letter-spacing: 4px;
+  text-shadow: 0 4px 22px rgba($red, .35), 0 0 60px rgba($gold, .2);
+  opacity: 0;
+}
+.reveal-couple {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.2rem, 4.5vw, 1.9rem);
+  color: $gold; letter-spacing: 3px;
+  opacity: 0;
+}
+
+@keyframes reveal-pop {
+  from { transform: scale(0.55) rotate(-4deg); opacity: 0; filter: blur(6px); }
+  to   { transform: scale(1)    rotate(0deg);  opacity: 1; filter: blur(0); }
+}
+
+// ══════════════════════════════════════════════════════════════
 //  RESPONSIVE
 // ══════════════════════════════════════════════════════════════
 @media(max-width:768px) {
