@@ -1,0 +1,50 @@
+@import "primeng/resources/themes/lara-light-pink/theme.css";
+@import "primeng/resources/primeng.min.css";
+@import "primeicons/primeicons.css";
+
+:root {
+  --red-primary: #c0392b;
+  --red-dark: #96281b;
+  --red-light: #e74c3c;
+  --gold: #d4a017;
+  --gold-light: #f0c040;
+  --cream: #fdf6ec;
+  --cream-dark: #f5e6d0;
+  --p-primary-color: var(--red-primary);
+  --p-primary-color-text: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  background: var(--cream);
+  color: #3d2b1f;
+  overflow-x: hidden;
+}
+
+.p-button.p-button-primary,
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-link) {
+  background: var(--red-primary) !important;
+  border-color: var(--red-primary) !important;
+  &:hover {
+    background: var(--red-dark) !important;
+    border-color: var(--red-dark) !important;
+  }
+}
+
+.p-divider::before {
+  border-color: var(--gold) !important;
+}
+
+.p-tag {
+  background: var(--red-primary) !important;
+}
+
+html, body {
+  height: 100%;
+}
