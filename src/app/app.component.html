@@ -6,6 +6,12 @@
   <span class="floral-corner fc-bl"></span>
   <span class="floral-corner fc-br"></span>
 
+  <!-- Title at very top (outside card area so it anchors to screen top on mobile) -->
+  <div class="env-title-block" [class.faded]="envelopeState !== 'closed'">
+    <p class="env-pre-text">คุณได้รับ</p>
+    <h2 class="env-title-text">การ์ดเชิญงานมงคลสมรส</h2>
+  </div>
+
   <!-- Floral arches -->
   <div class="floral-arch floral-arch-left" [class.faded]="envelopeState !== 'closed'">
     <svg viewBox="0 0 100 380" class="floral-arch-svg" xmlns="http://www.w3.org/2000/svg">
@@ -108,11 +114,6 @@
   </div>
 
   <div class="env-card-area">
-    <!-- Title overlay on bow -->
-    <div class="env-title-block" [class.faded]="envelopeState !== 'closed'">
-      <p class="env-pre-text">คุณได้รับ</p>
-      <h2 class="env-title-text">การ์ดเชิญงานมงคลสมรส</h2>
-    </div>
 
     <!-- Bow -->
     <div class="ribbon-bow-wrap" [class.faded]="envelopeState !== 'closed'">
@@ -193,30 +194,64 @@
 
         <div class="env-body">
           <div class="env-fold-lines"></div>
-          <div class="env-stamp">
-            <svg viewBox="0 0 44 55" class="stamp-svg" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="sH" cx="38%" cy="30%" r="65%">
-                  <stop offset="0%" stop-color="#ff88b8"/>
-                  <stop offset="55%" stop-color="#c0508a"/>
-                  <stop offset="100%" stop-color="#7b1c58"/>
-                </radialGradient>
-              </defs>
-              <rect x="1" y="2" width="42" height="53" rx="2" fill="rgba(100,30,60,0.1)"/>
-              <rect x="0" y="0" width="42" height="53" rx="2" fill="#fff8fb"/>
-              <rect x="0" y="0" width="42" height="13" rx="2" fill="#c05080"/>
-              <rect x="0" y="0" width="42" height="53" rx="2" fill="none"
-                    stroke="rgba(180,80,130,0.42)" stroke-width="1.2" stroke-dasharray="2.5,2"/>
-              <text x="21" y="9.5" text-anchor="middle" font-family="Georgia,serif"
-                    font-size="4.5" fill="rgba(255,235,245,0.95)" letter-spacing="0.8">THAILAND</text>
-              <path d="M21,37 C21,27 13,22 9,26 C5,30 8,38 21,48 C34,38 37,30 33,26 C29,22 21,27 21,37 Z"
-                    fill="url(#sH)" transform="scale(0.76) translate(5.5, 0)"/>
-              <ellipse cx="14" cy="27" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.32)"
-                       transform="rotate(-35,14,27)"/>
-              <text x="21" y="51" text-anchor="middle" font-family="Georgia,serif"
-                    font-size="5" fill="#8b2055" font-weight="bold">฿ 14</text>
-            </svg>
-          </div>
+        </div>
+
+        <!-- Side flaps — create classic diamond/X envelope fold -->
+        <div class="env-left-flap"></div>
+        <div class="env-right-flap"></div>
+
+        <!-- A & B Wax seal stamp — centered, above all flaps -->
+        <div class="env-stamp">
+          <svg viewBox="0 0 92 92" class="stamp-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="waxGrad" cx="38%" cy="32%" r="68%">
+                <stop offset="0%" stop-color="#8a1830"/>
+                <stop offset="48%" stop-color="#5a0d1c"/>
+                <stop offset="100%" stop-color="#280406"/>
+              </radialGradient>
+              <filter id="waxSh">
+                <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(15,0,5,.75)"/>
+              </filter>
+            </defs>
+            <g filter="url(#waxSh)">
+              <!-- Wax seal solid base -->
+              <circle cx="46" cy="46" r="43" fill="url(#waxGrad)"/>
+              <!-- Outer gold border ring -->
+              <circle cx="46" cy="46" r="43" fill="none" stroke="rgba(212,168,28,0.92)" stroke-width="2.5"/>
+              <!-- Decorative dashed ring -->
+              <circle cx="46" cy="46" r="37.5" fill="none" stroke="rgba(212,168,28,0.48)" stroke-width="1.2" stroke-dasharray="3.5,2.5"/>
+              <!-- Inner thin ring -->
+              <circle cx="46" cy="46" r="33" fill="none" stroke="rgba(212,168,28,0.28)" stroke-width="0.8"/>
+
+              <!-- Top star ornament -->
+              <text x="46" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="rgba(212,168,28,0.72)" letter-spacing="5">✦ ✦</text>
+              <!-- Bottom star ornament -->
+              <text x="46" y="79" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="rgba(212,168,28,0.72)" letter-spacing="5">✦ ✦</text>
+
+              <!-- Side rule lines -->
+              <line x1="16" y1="46" x2="27" y2="46" stroke="rgba(212,168,28,0.38)" stroke-width="0.9"/>
+              <line x1="65" y1="46" x2="76" y2="46" stroke="rgba(212,168,28,0.38)" stroke-width="0.9"/>
+
+              <!-- Letter A -->
+              <text x="30" y="57" text-anchor="middle"
+                    font-family="Cormorant Garamond,Georgia,serif"
+                    font-size="28" font-weight="700"
+                    fill="rgba(255,225,155,0.96)">A</text>
+              <!-- Italic ampersand -->
+              <text x="46" y="55" text-anchor="middle"
+                    font-family="Cormorant Garamond,Georgia,serif"
+                    font-size="15" font-style="italic"
+                    fill="rgba(212,168,28,0.9)">&amp;</text>
+              <!-- Letter B -->
+              <text x="62" y="57" text-anchor="middle"
+                    font-family="Cormorant Garamond,Georgia,serif"
+                    font-size="28" font-weight="700"
+                    fill="rgba(255,225,155,0.96)">B</text>
+
+              <!-- Wax 3D highlight -->
+              <ellipse cx="32" cy="26" rx="16" ry="9" fill="rgba(255,255,255,0.07)" transform="rotate(-38,32,26)"/>
+            </g>
+          </svg>
         </div>
 
         <div class="env-inner-card">
@@ -236,121 +271,149 @@
         <div class="env-lower"></div>
 
         <div class="env-flap">
-          <!-- Watercolor floral decoration -->
-          <div class="env-floral-deco" aria-hidden="true">
-            <svg class="env-floral-svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
-              <!-- Gold metallic stems -->
-              <path d="M0,130 C18,108 38,88 65,68 C82,56 100,44 118,30" stroke="#c8a030" stroke-width="1.8" fill="none" opacity=".52"/>
-              <path d="M5,128 C25,104 50,82 82,60 C100,48 120,36 140,22" stroke="#c8a030" stroke-width="1.2" fill="none" opacity=".4"/>
-              <path d="M0,130 C22,112 48,94 78,72" stroke="#c8a030" stroke-width="1" fill="none" opacity=".38"/>
-              <!-- Gold metallic leaves -->
-              <ellipse cx="32" cy="105" rx="17" ry="6" fill="#c8a030" opacity=".42" transform="rotate(-42,32,105)"/>
-              <ellipse cx="52" cy="88" rx="15" ry="5.5" fill="#d4a820" opacity=".38" transform="rotate(-28,52,88)"/>
-              <ellipse cx="72" cy="68" rx="14" ry="5" fill="#c8a030" opacity=".36" transform="rotate(-15,72,68)"/>
-              <ellipse cx="100" cy="48" rx="13" ry="4.8" fill="#d4a820" opacity=".35" transform="rotate(-5,100,48)"/>
-              <ellipse cx="16" cy="120" rx="13" ry="5" fill="#c8a030" opacity=".38" transform="rotate(-58,16,120)"/>
-              <!-- Green organic leaves -->
-              <ellipse cx="40" cy="84" rx="22" ry="8" fill="#5a8035" opacity=".82" transform="rotate(-38,40,84)"/>
-              <ellipse cx="65" cy="65" rx="20" ry="7.5" fill="#6a9040" opacity=".8" transform="rotate(-24,65,65)"/>
-              <ellipse cx="90" cy="48" rx="18" ry="7" fill="#5a7830" opacity=".78" transform="rotate(-12,90,48)"/>
-              <ellipse cx="22" cy="100" rx="16" ry="6.5" fill="#6a9040" opacity=".76" transform="rotate(-52,22,100)"/>
-              <ellipse cx="115" cy="34" rx="15" ry="6" fill="#5a8035" opacity=".74" transform="rotate(3,115,34)"/>
-              <ellipse cx="140" cy="22" rx="13" ry="5" fill="#6a9040" opacity=".7" transform="rotate(8,140,22)"/>
-              <!-- Large wine/mauve rose — focal point -->
-              <g transform="translate(62,54)">
-                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".88"/>
-                <ellipse rx="17" ry="24" cy="-15" fill="#9a3272" opacity=".82" transform="rotate(72)"/>
-                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".82" transform="rotate(144)"/>
-                <ellipse rx="17" ry="24" cy="-15" fill="#9a3272" opacity=".82" transform="rotate(216)"/>
-                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".82" transform="rotate(288)"/>
-                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(36)"/>
-                <ellipse rx="10" ry="15" cy="-10" fill="#6e2054" transform="rotate(108)"/>
-                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(180)"/>
-                <ellipse rx="10" ry="15" cy="-10" fill="#6e2054" transform="rotate(252)"/>
-                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(324)"/>
-                <circle r="9" fill="#36081e"/>
-                <ellipse rx="5" ry="3.2" cx="-3" cy="-3" fill="rgba(255,180,210,.28)" transform="rotate(-35)"/>
+          <div style="display:none" aria-hidden="true">
+            <svg class="env-floral-svg" viewBox="0 0 430 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <!-- STEMS left → center -->
+              <path d="M0,160 C28,138 62,114 98,92 C126,74 158,58 192,44" stroke="#c8a030" stroke-width="2" fill="none" opacity=".48"/>
+              <path d="M0,155 C32,130 70,106 112,84 C142,66 174,52 206,40" stroke="#c8a030" stroke-width="1.2" fill="none" opacity=".36"/>
+              <!-- STEMS right → center -->
+              <path d="M430,160 C402,138 368,114 332,92 C304,74 272,58 238,44" stroke="#c8a030" stroke-width="2" fill="none" opacity=".48"/>
+              <path d="M430,155 C398,130 360,106 318,84 C288,66 256,52 224,40" stroke="#c8a030" stroke-width="1.2" fill="none" opacity=".36"/>
+
+              <!-- GREEN LEAVES left -->
+              <ellipse cx="42" cy="136" rx="24" ry="9" fill="#4a8040" opacity=".85" transform="rotate(-36,42,136)"/>
+              <ellipse cx="18" cy="152" rx="19" ry="7.5" fill="#5a9050" opacity=".82" transform="rotate(-54,18,152)"/>
+              <ellipse cx="80" cy="115" rx="22" ry="8.5" fill="#4a8040" opacity=".82" transform="rotate(-22,80,115)"/>
+              <ellipse cx="118" cy="96" rx="20" ry="7.5" fill="#5a9050" opacity=".8" transform="rotate(-14,118,96)"/>
+              <ellipse cx="156" cy="78" rx="18" ry="7" fill="#4a8040" opacity=".78" transform="rotate(-8,156,78)"/>
+              <ellipse cx="188" cy="60" rx="16" ry="6.5" fill="#5a9050" opacity=".75" transform="rotate(-3,188,60)"/>
+              <!-- GREEN LEAVES right (mirror) -->
+              <ellipse cx="388" cy="136" rx="24" ry="9" fill="#4a8040" opacity=".85" transform="rotate(36,388,136)"/>
+              <ellipse cx="412" cy="152" rx="19" ry="7.5" fill="#5a9050" opacity=".82" transform="rotate(54,412,152)"/>
+              <ellipse cx="350" cy="115" rx="22" ry="8.5" fill="#4a8040" opacity=".82" transform="rotate(22,350,115)"/>
+              <ellipse cx="312" cy="96" rx="20" ry="7.5" fill="#5a9050" opacity=".8" transform="rotate(14,312,96)"/>
+              <ellipse cx="274" cy="78" rx="18" ry="7" fill="#4a8040" opacity=".78" transform="rotate(8,274,78)"/>
+              <ellipse cx="242" cy="60" rx="16" ry="6.5" fill="#5a9050" opacity=".75" transform="rotate(3,242,60)"/>
+
+              <!-- GOLD METALLIC LEAVES left -->
+              <ellipse cx="30" cy="150" rx="17" ry="6.5" fill="#c8a030" opacity=".38" transform="rotate(-50,30,150)"/>
+              <ellipse cx="96" cy="108" rx="16" ry="6" fill="#d4a820" opacity=".34" transform="rotate(-20,96,108)"/>
+              <ellipse cx="165" cy="72" rx="15" ry="5.5" fill="#c8a030" opacity=".3" transform="rotate(-8,165,72)"/>
+              <!-- GOLD METALLIC LEAVES right -->
+              <ellipse cx="400" cy="150" rx="17" ry="6.5" fill="#c8a030" opacity=".38" transform="rotate(50,400,150)"/>
+              <ellipse cx="334" cy="108" rx="16" ry="6" fill="#d4a820" opacity=".34" transform="rotate(20,334,108)"/>
+              <ellipse cx="265" cy="72" rx="15" ry="5.5" fill="#c8a030" opacity=".3" transform="rotate(8,265,72)"/>
+
+              <!-- LARGE WINE ROSE — left focal -->
+              <g transform="translate(62,128)">
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".9"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#9a3272" opacity=".84" transform="rotate(72)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".84" transform="rotate(144)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#9a3272" opacity=".84" transform="rotate(216)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".84" transform="rotate(288)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(36)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#6e2054" transform="rotate(108)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(180)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#6e2054" transform="rotate(252)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(324)"/>
+                <circle r="10" fill="#36081e"/>
+                <ellipse rx="6" ry="4" cx="-4" cy="-4" fill="rgba(255,180,210,.3)" transform="rotate(-35)"/>
               </g>
-              <!-- Large soft pink rose -->
-              <g transform="translate(112,25)">
-                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".88"/>
-                <ellipse rx="13" ry="18" cy="-12" fill="#f8acba" opacity=".82" transform="rotate(72)"/>
-                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".82" transform="rotate(144)"/>
-                <ellipse rx="13" ry="18" cy="-12" fill="#f8acba" opacity=".82" transform="rotate(216)"/>
-                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".82" transform="rotate(288)"/>
-                <ellipse rx="8" ry="11" cy="-8" fill="#c85e78" transform="rotate(36)"/>
-                <ellipse rx="8" ry="11" cy="-8" fill="#c85e78" transform="rotate(180)"/>
-                <circle r="7.5" fill="#96204e"/>
-                <ellipse rx="3.8" ry="2.4" cx="-2.8" cy="-2.8" fill="rgba(255,200,215,.3)" transform="rotate(-35)"/>
+              <!-- LARGE PINK ROSE — left secondary -->
+              <g transform="translate(152,96)">
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".9"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f8acba" opacity=".84" transform="rotate(72)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".84" transform="rotate(144)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f8acba" opacity=".84" transform="rotate(216)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".84" transform="rotate(288)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#c85e78" transform="rotate(36)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#c85e78" transform="rotate(180)"/>
+                <circle r="9" fill="#96204e"/>
+                <ellipse rx="5" ry="3" cx="-3.5" cy="-3.5" fill="rgba(255,200,215,.32)" transform="rotate(-35)"/>
               </g>
-              <!-- Peach/orange accent flower -->
-              <g transform="translate(20,68)">
-                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".88"/>
-                <ellipse rx="9" ry="13" cy="-9" fill="#f0a060" opacity=".82" transform="rotate(72)"/>
-                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".82" transform="rotate(144)"/>
-                <ellipse rx="9" ry="13" cy="-9" fill="#f0a060" opacity=".82" transform="rotate(216)"/>
-                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".82" transform="rotate(288)"/>
-                <circle r="6" fill="#b05822"/>
+              <!-- RED ROSE — left edge -->
+              <g transform="translate(18,150)">
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".88"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#d44040" opacity=".82" transform="rotate(72)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".82" transform="rotate(144)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#d44040" opacity=".82" transform="rotate(216)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".82" transform="rotate(288)"/>
+                <ellipse rx="8" ry="12" cy="-8" fill="#8b2020" transform="rotate(36)"/>
+                <circle r="7.5" fill="#5a1010"/>
               </g>
-              <!-- Cream/white rose bud -->
-              <g transform="translate(92,72)">
-                <ellipse rx="8" ry="11" cy="-8" fill="#f5ead8" opacity=".88"/>
-                <ellipse rx="8" ry="11" cy="-8" fill="#fdf3e8" opacity=".8" transform="rotate(120)"/>
-                <ellipse rx="8" ry="11" cy="-8" fill="#f5ead8" opacity=".8" transform="rotate(240)"/>
-                <circle r="5.5" fill="#d8c0a0"/>
+
+              <!-- LARGE WINE ROSE — right focal -->
+              <g transform="translate(368,128)">
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".9"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#9a3272" opacity=".84" transform="rotate(72)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".84" transform="rotate(144)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#9a3272" opacity=".84" transform="rotate(216)"/>
+                <ellipse rx="20" ry="28" cy="-18" fill="#8b2a62" opacity=".84" transform="rotate(288)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(36)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#6e2054" transform="rotate(108)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(180)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#6e2054" transform="rotate(252)"/>
+                <ellipse rx="12" ry="18" cy="-12" fill="#62184a" transform="rotate(324)"/>
+                <circle r="10" fill="#36081e"/>
+                <ellipse rx="6" ry="4" cx="-4" cy="-4" fill="rgba(255,180,210,.3)" transform="rotate(-35)"/>
               </g>
-              <!-- Small peach bud -->
-              <g transform="translate(148,48)">
-                <ellipse rx="7" ry="10" cy="-7" fill="#f0c09a" opacity=".85"/>
-                <ellipse rx="7" ry="10" cy="-7" fill="#f8cca8" opacity=".78" transform="rotate(120)"/>
-                <ellipse rx="7" ry="10" cy="-7" fill="#f0c09a" opacity=".78" transform="rotate(240)"/>
-                <circle r="5" fill="#d09060"/>
+              <!-- LARGE PINK ROSE — right secondary -->
+              <g transform="translate(278,96)">
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".9"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f8acba" opacity=".84" transform="rotate(72)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".84" transform="rotate(144)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f8acba" opacity=".84" transform="rotate(216)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#f098aa" opacity=".84" transform="rotate(288)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#c85e78" transform="rotate(36)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#c85e78" transform="rotate(180)"/>
+                <circle r="9" fill="#96204e"/>
+                <ellipse rx="5" ry="3" cx="-3.5" cy="-3.5" fill="rgba(255,200,215,.32)" transform="rotate(-35)"/>
               </g>
-              <!-- Gold berries -->
-              <circle cx="80" cy="85" r="3.2" fill="#c8a030" opacity=".58"/>
-              <circle cx="86" cy="90" r="2.8" fill="#d4a820" opacity=".5"/>
-              <circle cx="75" cy="92" r="2.2" fill="#b89020" opacity=".48"/>
-              <circle cx="138" cy="68" r="2.8" fill="#c8a030" opacity=".52"/>
-              <circle cx="145" cy="74" r="2.3" fill="#d4a820" opacity=".46"/>
-            </svg>
-          </div>
-          <div class="env-seal">
-            <svg viewBox="0 0 60 60" class="seal-angel-svg" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="sgRing" cx="40%" cy="35%" r="68%">
-                  <stop offset="0%" stop-color="#f5d040"/>
-                  <stop offset="55%" stop-color="#d4a017"/>
-                  <stop offset="100%" stop-color="#8a6000"/>
-                </radialGradient>
-                <radialGradient id="sgHrt" cx="38%" cy="32%" r="65%">
-                  <stop offset="0%" stop-color="#ff88b8"/>
-                  <stop offset="55%" stop-color="#c0508a"/>
-                  <stop offset="100%" stop-color="#7b1c58"/>
-                </radialGradient>
-                <filter id="sgShad">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.45)"/>
-                </filter>
-              </defs>
-              <g filter="url(#sgShad)">
-                <circle cx="30" cy="30" r="27" fill="url(#sgRing)"/>
-                <circle cx="30" cy="30" r="27" fill="none"
-                        stroke="rgba(255,235,80,0.55)" stroke-width="1.5" stroke-dasharray="4,3"/>
-                <circle cx="30" cy="30" r="20" fill="#c0508a"/>
-                <circle cx="30" cy="30" r="20" fill="none"
-                        stroke="rgba(255,200,220,0.3)" stroke-width="0.8"/>
-                <path d="M30,28 C30,20 22,15 17,20 C12,25 16,35 30,45 C44,35 48,25 43,20 C38,15 30,20 30,28 Z"
-                      fill="#1a0822" opacity="0.3" transform="translate(1,2)"/>
-                <path d="M30,28 C30,20 22,15 17,20 C12,25 16,35 30,45 C44,35 48,25 43,20 C38,15 30,20 30,28 Z"
-                      fill="url(#sgHrt)"/>
-                <path d="M30,28 C30,22 24,18 20,22 C16,26 19,34 30,43 C41,34 44,26 40,22 C36,18 30,22 30,28 Z"
-                      fill="#e87ab8" opacity="0.5"/>
-                <ellipse cx="23" cy="21" rx="5" ry="3.5"
-                         fill="rgba(255,255,255,0.32)" transform="rotate(-35,23,21)"/>
-                <circle cx="30" cy="4.5" r="1.5" fill="rgba(255,235,80,0.75)"/>
-                <circle cx="30" cy="55.5" r="1.5" fill="rgba(255,235,80,0.75)"/>
-                <circle cx="4.5" cy="30" r="1.5" fill="rgba(255,235,80,0.75)"/>
-                <circle cx="55.5" cy="30" r="1.5" fill="rgba(255,235,80,0.75)"/>
+              <!-- RED ROSE — right edge -->
+              <g transform="translate(412,150)">
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".88"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#d44040" opacity=".82" transform="rotate(72)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".82" transform="rotate(144)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#d44040" opacity=".82" transform="rotate(216)"/>
+                <ellipse rx="13" ry="18" cy="-11" fill="#c0392b" opacity=".82" transform="rotate(288)"/>
+                <ellipse rx="8" ry="12" cy="-8" fill="#8b2020" transform="rotate(36)"/>
+                <circle r="7.5" fill="#5a1010"/>
               </g>
+
+              <!-- CENTER PEACH ROSE -->
+              <g transform="translate(215,52)">
+                <ellipse rx="13" ry="18" cy="-12" fill="#e89050" opacity=".85"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f0a060" opacity=".8" transform="rotate(72)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#e89050" opacity=".8" transform="rotate(144)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f0a060" opacity=".8" transform="rotate(216)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#e89050" opacity=".8" transform="rotate(288)"/>
+                <circle r="8" fill="#b05822"/>
+              </g>
+              <!-- CREAM BUDS flanking center -->
+              <g transform="translate(178,60)">
+                <ellipse rx="9" ry="12" cy="-9" fill="#f5ead8" opacity=".85"/>
+                <ellipse rx="9" ry="12" cy="-9" fill="#fdf3e8" opacity=".78" transform="rotate(120)"/>
+                <ellipse rx="9" ry="12" cy="-9" fill="#f5ead8" opacity=".78" transform="rotate(240)"/>
+                <circle r="6" fill="#d8c0a0"/>
+              </g>
+              <g transform="translate(252,60)">
+                <ellipse rx="9" ry="12" cy="-9" fill="#f0c09a" opacity=".82"/>
+                <ellipse rx="9" ry="12" cy="-9" fill="#f8cca8" opacity=".76" transform="rotate(120)"/>
+                <ellipse rx="9" ry="12" cy="-9" fill="#f0c09a" opacity=".76" transform="rotate(240)"/>
+                <circle r="6" fill="#d09060"/>
+              </g>
+
+              <!-- GOLD BERRIES left -->
+              <circle cx="110" cy="108" r="4" fill="#c8a030" opacity=".55"/>
+              <circle cx="122" cy="114" r="3.2" fill="#d4a820" opacity=".48"/>
+              <circle cx="100" cy="116" r="2.8" fill="#b89020" opacity=".45"/>
+              <!-- GOLD BERRIES right -->
+              <circle cx="320" cy="108" r="4" fill="#c8a030" opacity=".55"/>
+              <circle cx="308" cy="114" r="3.2" fill="#d4a820" opacity=".48"/>
+              <circle cx="330" cy="116" r="2.8" fill="#b89020" opacity=".45"/>
+              <!-- CENTER BERRIES -->
+              <circle cx="200" cy="70" r="3" fill="#c8a030" opacity=".5"/>
+              <circle cx="230" cy="70" r="3" fill="#d4a820" opacity=".45"/>
             </svg>
           </div>
         </div>
@@ -367,7 +430,7 @@
   <!-- ── Reveal text ── -->
   <div class="reveal-overlay" [class.visible]="showRevealText">
     <div class="reveal-ornament">✦ ♥ ✦</div>
-    <h2 class="reveal-main-text">แต่งแล้วเด้อ!</h2>
+    <h2 class="reveal-main-text">แต่งแล้วเด้อ</h2>
     <p class="reveal-couple">{{ brideNickname }} ♥ {{ groomNickname }}</p>
   </div>
 </div>
@@ -495,7 +558,6 @@
       <span class="ornament">✦</span>
     </div>
     <div class="dress-theme">
-      <p class="dress-subtitle">ธีมสีงานแต่งงาน</p>
       <div class="color-palette">
         <div *ngFor="let c of dressColors" class="color-swatch"
              [style.background]="c.hex"
@@ -586,26 +648,7 @@
     </div>
   </section>
 
-  <!-- ── SECTION 6: CEREMONY SCHEDULE (animated) ── -->
-  <section class="schedule-section" id="sec-schedule" data-animate>
-    <div class="section-header">
-      <span class="ornament">✦</span>
-      <h2 class="section-title">กำหนดการ</h2>
-      <span class="ornament">✦</span>
-    </div>
-    <div class="schedule-list">
-      <div *ngFor="let s of schedule; let i = index"
-           class="schedule-item"
-           [style.animation-delay]="i * 0.12 + 's'">
-        <div class="sched-icon">{{ s.icon }}</div>
-        <div class="sched-time">{{ s.time }}</div>
-        <div class="sched-line"></div>
-        <div class="sched-event">{{ s.event }}</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 7: MAP ── -->
+  <!-- ── SECTION 6: MAP ── -->
   <section class="map-section" id="sec-map" data-animate>
     <div class="section-header">
       <span class="ornament">✦</span>
@@ -631,6 +674,25 @@
         <button class="map-btn" (click)="openMap()">
           <span>🗺</span> ดูแผนที่ใน Google Maps
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 7: CEREMONY SCHEDULE (animated) ── -->
+  <section class="schedule-section" id="sec-schedule" data-animate>
+    <div class="section-header">
+      <span class="ornament">✦</span>
+      <h2 class="section-title">กำหนดการ</h2>
+      <span class="ornament">✦</span>
+    </div>
+    <div class="schedule-list">
+      <div *ngFor="let s of schedule; let i = index"
+           class="schedule-item"
+           [style.animation-delay]="i * 0.12 + 's'">
+        <div class="sched-icon">{{ s.icon }}</div>
+        <div class="sched-time">{{ s.time }}</div>
+        <div class="sched-line"></div>
+        <div class="sched-event">{{ s.event }}</div>
       </div>
     </div>
   </section>
@@ -770,6 +832,11 @@
         <rect x="77" y="77" width="3" height="3" fill="#1a0505"/>
         <rect x="83" y="83" width="3" height="3" fill="#1a0505"/>
       </svg>
+    </div>
+    <div class="footer-thanks">
+      <span class="footer-thanks-ornament">— ✦ —</span>
+      <p class="footer-thanks-main">ขอบคุณทุกท่าน</p>
+      <p class="footer-thanks-sub">ที่มาร่วมงานมงคลสมรส</p>
     </div>
     <div class="footer-ornament">✦ ✦ ✦</div>
   </footer>
