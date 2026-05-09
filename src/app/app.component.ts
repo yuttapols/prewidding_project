@@ -20,17 +20,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   openEnvelope() {
     if (this.envelopeState !== 'closed') return;
-    this.envelopeState = 'opening';
-    setTimeout(() => {
-      this.showRevealText = true;
-      this.cdr.detectChanges();
-    }, 3000);
+    this.showRevealText = true;
+    this.cdr.detectChanges();
     setTimeout(() => {
       this.showRevealText = false;
+      this.envelopeState = 'opening';
+      this.cdr.detectChanges();
+    }, 5000);
+    setTimeout(() => {
       this.envelopeState = 'breathing';
       this.showInvitation = true;
       this.cdr.detectChanges();
-    }, 6000);
+    }, 12000);
   }
 
   // ── Couple info ───────────────────────────────────────────
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   schedule = [
     { time: '09.09 น.',       event: 'แห่ขันหมาก',        icon: '💒' },
-    { time: '10.00–12.00 น.', event: 'พิธีสู่ขวัญ',       icon: '🙏' },
+    { time: '10.00–12.00 น.', event: 'พิธีสู่ขวัญ',       icon: '💑' },
     { time: '13.00 น.',       event: 'ฉลองมงคลสมรส',      icon: '🥂' },
   ];
 
@@ -110,11 +111,33 @@ export class AppComponent implements OnInit, OnDestroy {
     this.slideTimer = setInterval(() => {
       this.nextSlide(); this.cdr.detectChanges();
     }, 3500);
+
+    this.audio = new Audio('assets/music.mp3');
+    this.audio.loop   = true;
+    this.audio.volume = 0.55;
+    this.audio.onerror = () => {
+      this.musicError = true; this.isMusicPlaying = false;
+      this.cdr.detectChanges();
+    };
+    // ลองเปิดเพลงทันที — ถ้า browser บล็อก autoplay รอ interaction แรก
+    this.audio.play()
+      .then(() => { this.isMusicPlaying = true; this.cdr.detectChanges(); })
+      .catch(() => {
+        const onFirstInteract = () => {
+          if (!this.isMusicPlaying && !this.musicError) {
+            this.audio!.play()
+              .then(() => { this.isMusicPlaying = true; this.cdr.detectChanges(); })
+              .catch(() => {});
+          }
+        };
+        document.addEventListener('click',      onFirstInteract, { once: true });
+        document.addEventListener('touchstart', onFirstInteract, { once: true });
+      });
   }
 
   ngOnDestroy() {
     if (this.slideTimer) clearInterval(this.slideTimer);
-    if (this.audio) { this.audio.pause(); this.audio = null; }
+if (this.audio) { this.audio.pause(); this.audio = null; }
   }
 
   openMap() {

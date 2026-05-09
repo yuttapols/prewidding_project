@@ -102,16 +102,25 @@ $text:   #3d2b1f;
 }
 
 .env-title-block {
-  text-align: center; z-index:2; position:relative;
-  transition: opacity .4s, transform .4s;
-  &.faded { opacity:0; transform:translateY(-8px); }
+  position:absolute; top:10px;
+  left:50%; transform:translateX(-50%);
+  z-index:15; width:clamp(200px,72%,340px);
+  text-align:center; pointer-events:none;
+  transition: opacity .45s, transform .45s;
+  &.faded { opacity:0; transform:translateX(-50%) translateY(-6px); }
+
   .env-pre-text {
-    font-family:'Sarabun',sans-serif; font-size:.82rem; font-weight:300;
-    color:rgba(110,40,25,.65); letter-spacing:5px; text-transform:uppercase; margin-bottom:5px;
+    font-family:'Sarabun',sans-serif; font-size:.72rem; font-weight:400;
+    color:rgba(255,228,200,.9); letter-spacing:7px; text-transform:uppercase; margin-bottom:5px;
+    text-shadow:0 1px 10px rgba(30,0,8,.7);
+    animation:letter-breathe 4s ease-in-out infinite;
   }
   .env-title-text {
-    font-family:'Noto Serif Thai','Cormorant Garamond',serif; font-size:clamp(1.1rem,3.8vw,1.5rem);
-    color:#8b2015; font-weight:500; letter-spacing:2px;
+    font-family:'Noto Serif Thai','Cormorant Garamond',serif;
+    font-size:clamp(1.05rem,3.6vw,1.55rem);
+    color:#fff; font-weight:600; letter-spacing:2.5px;
+    text-shadow:0 2px 18px rgba(30,0,8,.8), 0 0 32px rgba($gold,.45);
+    animation:title-glow 3s ease-in-out infinite;
   }
 }
 
@@ -120,30 +129,31 @@ $text:   #3d2b1f;
 }
 
 .ribbon-bow-wrap {
-  position:relative; z-index:10; margin-bottom:-32px; pointer-events:none;
+  position:relative; z-index:12; margin-bottom:-118px; margin-top:0; pointer-events:none;
   transition: opacity .4s, transform .4s;
   &.faded { opacity:0; transform:translateY(-10px); }
-  .ribbon-bow-svg { width:clamp(150px,50vw,240px); height:auto; display:block;
-    filter:drop-shadow(0 6px 14px rgba(100,10,10,.35)); }
+  .ribbon-bow-svg { width:clamp(110px,34vw,162px); height:auto; display:block;
+    filter:drop-shadow(0 8px 16px rgba(50,0,8,.5)); }
 }
 
 .oval-frame {
+  position:relative;
   width:clamp(390px,96vw,540px); height:clamp(448px,110vw,620px);
   border-radius:50%;
-  background:radial-gradient(ellipse at 42% 35%, #fbe8e0 0%, #f5d0c4 45%, #ecbcac 100%);
-  border:2px solid rgba($red,.3);
-  box-shadow:0 0 0 6px rgba($red,.1), 0 0 0 14px rgba($gold,.07),
-             0 28px 80px rgba(80,10,10,.32), inset 0 0 50px rgba($red,.1);
+  background:radial-gradient(ellipse at 42% 35%, #fff4f8 0%, #fce8f2 45%, #f8d8ea 100%);
+  border:2px solid rgba(210,140,170,.28);
+  box-shadow:0 0 0 6px rgba(210,140,170,.08), 0 0 0 14px rgba($gold,.06),
+             0 28px 80px rgba(120,40,80,.22), inset 0 0 50px rgba(220,140,175,.07);
   display:flex; align-items:center; justify-content:center; overflow:visible;
 }
 
 .env-container {
   width:clamp(310px,84vw,430px); height:clamp(217px,58.8vw,301px);
   position:relative; cursor:pointer; perspective:900px;
-  filter:drop-shadow(0 10px 28px rgba(60,5,5,.55)) drop-shadow(0 3px 8px rgba(60,5,5,.3));
+  filter:drop-shadow(0 10px 28px rgba(120,40,80,.38)) drop-shadow(0 3px 8px rgba(120,40,80,.22));
   transition:filter .25s, transform .25s;
   &:hover:not(.is-opening):not(.is-revealed) {
-    filter:drop-shadow(0 18px 38px rgba(60,5,5,.65)) drop-shadow(0 5px 12px rgba(60,5,5,.35));
+    filter:drop-shadow(0 18px 38px rgba(120,40,80,.52)) drop-shadow(0 5px 12px rgba(120,40,80,.3));
     transform:translateY(-6px) scale(1.04);
   }
   &.is-revealed { cursor:default; pointer-events:none; animation:env-float-up .7s ease 1.4s forwards; }
@@ -152,15 +162,15 @@ $text:   #3d2b1f;
 
 .env-body {
   position:absolute; inset:0;
-  background:linear-gradient(150deg, #e04545 0%, $red 28%, #a82020 60%, $red-d 100%);
-  border:2px solid rgba($gold-l,.4); border-radius:4px; z-index:1; overflow:hidden;
-  box-shadow:inset 0 4px 16px rgba(255,160,140,.15), inset 0 -4px 14px rgba(0,0,0,.25);
+  background:linear-gradient(150deg, #fff8fc 0%, #fde6f2 28%, #f9d0e8 58%, #f2bcde 100%);
+  border:2px solid rgba(210,140,175,.35); border-radius:4px; z-index:1; overflow:hidden;
+  box-shadow:inset 0 4px 16px rgba(255,180,210,.18), inset 0 -4px 14px rgba(180,80,130,.1);
 }
 .env-fold-lines {
   position:absolute; inset:0;
   background:
-    linear-gradient(to bottom right,transparent 49%,rgba(255,210,190,.1) 49%,rgba(255,210,190,.1) 51%,transparent 51%),
-    linear-gradient(to bottom left, transparent 49%,rgba(255,210,190,.1) 49%,rgba(255,210,190,.1) 51%,transparent 51%);
+    linear-gradient(to bottom right,transparent 49%,rgba(255,200,225,.14) 49%,rgba(255,200,225,.14) 51%,transparent 51%),
+    linear-gradient(to bottom left, transparent 49%,rgba(255,200,225,.14) 49%,rgba(255,200,225,.14) 51%,transparent 51%);
 }
 .env-stamp {
   position:absolute; top:9%; right:7%; width:36px; height:45px; z-index:3;
@@ -170,56 +180,68 @@ $text:   #3d2b1f;
 
 .env-inner-card {
   position:absolute; top:3%; left:3%; right:3%; height:90%;
-  background:linear-gradient(160deg, #e84040 0%, $red 35%, #9b2020 70%, $red-d 100%);
-  border:1.5px solid rgba($gold-l,.55); border-radius:4px; z-index:2;
+  background:linear-gradient(155deg, #fff9f7 0%, #fef2f8 32%, #fce4ef 64%, #fad4e5 100%);
+  border:1.5px solid rgba($gold,.58); border-radius:4px; z-index:2;
   display:flex; align-items:center; justify-content:center; text-align:center;
-  box-shadow:inset 0 0 28px rgba(0,0,0,.22), inset 0 2px 8px rgba(255,200,160,.12);
+  box-shadow:inset 0 0 32px rgba($red,.05), inset 0 2px 12px rgba(255,200,218,.18),
+             0 2px 8px rgba(100,0,20,.1);
   transform:translateY(0); opacity:0;
   transition:transform 1.1s cubic-bezier(.34,1.3,.64,1) 1.4s, opacity .5s ease 1.4s;
   .is-opening &, .is-revealed & { transform:translateY(-58%); opacity:1; }
 
   &::before {
     content:''; position:absolute; inset:6px;
-    border:1px solid rgba($gold-l,.3); border-radius:2px; pointer-events:none;
+    border:1px solid rgba($gold,.38); border-radius:2px; pointer-events:none;
   }
+}
+.inner-card-corner {
+  position:absolute; font-size:.58rem; color:rgba($gold,.7);
+  &.ic-tl { top:5px; left:8px; }
+  &.ic-tr { top:5px; right:8px; }
+  &.ic-bl { bottom:5px; left:8px; }
+  &.ic-br { bottom:5px; right:8px; }
+}
+.inner-rule {
+  width:55%; height:1px; margin:5px auto;
+  background:linear-gradient(90deg, transparent, rgba($gold,.55), transparent);
 }
 .inner-card-content {
   padding:14px; position:relative; z-index:1;
-  .inner-ornament { font-size:.7rem; color:rgba($gold-l,.9); letter-spacing:7px; margin-bottom:12px; }
+  .inner-ornament { font-size:.78rem; color:rgba($gold,.92); letter-spacing:7px; margin-bottom:10px; }
   .inner-names {
-    font-family:'Dancing Script',cursive; font-size:clamp(1.5rem,4.5vw,2rem);
-    color:#fff; margin-bottom:8px; font-weight:700;
-    text-shadow:0 2px 12px rgba(0,0,0,.3);
+    font-family:'Dancing Script',cursive; font-size:clamp(1.4rem,4.2vw,1.9rem);
+    color:#7a1030; margin-bottom:6px; font-weight:700;
+    text-shadow:0 2px 12px rgba(122,16,48,.22);
     animation:hero-name-shine 2.8s ease-in-out infinite;
   }
   .inner-sub {
     font-family:'Sarabun',sans-serif; font-size:.75rem;
-    color:rgba(255,255,255,.8); letter-spacing:4px; text-transform:uppercase; margin-bottom:6px;
+    color:rgba(122,16,48,.72); letter-spacing:5px; text-transform:uppercase; margin-bottom:6px;
   }
   .inner-date {
-    font-family:'Cormorant Garamond',serif; font-size:1.05rem;
-    color:$gold-l; letter-spacing:4px;
-    text-shadow:0 0 12px rgba($gold,.6);
+    font-family:'Cinzel',serif; font-size:.95rem;
+    color:$gold; letter-spacing:2px;
+    text-shadow:0 0 12px rgba($gold,.55);
   }
 }
 
 .env-lower {
   position:absolute; bottom:0; left:0; right:0; height:57%;
   clip-path:polygon(0 32%,50% 0,100% 32%,100% 100%,0 100%);
-  background:linear-gradient(175deg,#e84040 0%,$red 30%,#962020 65%,$red-d 100%);
-  z-index:4; box-shadow:inset 0 4px 14px rgba(0,0,0,.14);
+  background:linear-gradient(175deg, #fce8f2 0%, #f8d2e6 30%, #f2bcdc 65%, #ecaad2 100%);
+  z-index:4; box-shadow:inset 0 4px 14px rgba(160,60,110,.1);
 }
 .env-flap {
   position:absolute; top:0; left:0; right:0; height:53%;
-  background:linear-gradient(175deg,#d83535 0%,#b02828 42%,#c03030 72%,#962020 100%);
+  background:linear-gradient(175deg, #fce0ec 0%, #f8cce2 42%, #f4bcdc 72%, #eeaad2 100%);
   transform-origin:top center; transform-style:preserve-3d;
   backface-visibility:hidden; -webkit-backface-visibility:hidden;
   transition:transform 2s cubic-bezier(.4,.01,.2,1); z-index:5;
-  box-shadow:inset 0 -4px 16px rgba(0,0,0,.1);
+  box-shadow:inset 0 -4px 16px rgba(160,60,110,.08);
   &::before { content:''; position:absolute; inset:0;
-    background:linear-gradient(145deg,rgba(255,180,160,.16) 0%,transparent 55%); pointer-events:none; }
+    background:linear-gradient(145deg,rgba(255,220,235,.22) 0%,transparent 55%); pointer-events:none; }
   &::after { content:''; position:absolute; bottom:0; left:5%; right:5%; height:1px;
-    background:linear-gradient(90deg,transparent,rgba($gold,.6),transparent); }
+    background:linear-gradient(90deg,transparent,rgba($gold,.55),transparent); }
   .is-opening &, .is-revealed & { transform:rotateX(-180deg); }
 }
 .env-seal {
@@ -324,8 +346,8 @@ $text:   #3d2b1f;
   50%     { text-shadow:0 2px 12px rgba(0,0,0,.35), 0 0 28px rgba(255,255,255,.25), 0 0 56px rgba($gold,.2); }
 }
 @keyframes gold-date-shine {
-  0%,100% { letter-spacing:6px; opacity:.85; }
-  50%     { letter-spacing:7px; opacity:1; text-shadow:0 0 14px rgba($gold,.5); }
+  0%,100% { opacity:.85; }
+  50%     { opacity:1; text-shadow:0 0 14px rgba($gold,.5); }
 }
 
 .slide-up    { animation: fadeUp    0.7s ease both; }
@@ -385,8 +407,8 @@ $text:   #3d2b1f;
 .hero-name-groom, .hero-name-bride { display:inline-block; }
 .hero-label { font-family:'Noto Serif Thai','Sarabun',sans-serif; font-weight:400; font-size:1.1rem;
   color:$gold-l; letter-spacing:8px; text-transform:uppercase; margin-bottom:14px; }
-.hero-date-line { display:inline-block; font-family:'Cormorant Garamond',serif;
-  font-size:1.2rem; color:rgba(255,255,255,.7); letter-spacing:6px;
+.hero-date-line { display:inline-block; font-family:'Cinzel',serif;
+  font-size:1.05rem; color:rgba(255,255,255,.85); letter-spacing:3px;
   border:1px solid rgba($gold,.4); padding:6px 24px; border-radius:2px;
   animation:gold-date-shine 3s ease-in-out infinite; }
 @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
@@ -519,14 +541,14 @@ $text:   #3d2b1f;
   color:rgba(255,255,255,.7); letter-spacing:6px; text-transform:uppercase; margin-bottom:12px; }
 .dt-date { font-family:'Noto Serif Thai','Cormorant Garamond',serif; font-size:clamp(1.3rem,4.5vw,2rem);
   color:#fff; font-weight:500; margin-bottom:6px; line-height:1.4; }
-.dt-date-en { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(255,255,255,.65);
-  font-style:italic; margin-bottom:20px; }
+.dt-date-en { font-family:'Cinzel',serif; font-size:.85rem; color:rgba(255,255,255,.75);
+  letter-spacing:1px; margin-bottom:20px; }
 .dt-divider { margin:16px 0;
   .dt-ornament { font-size:1.2rem; color:$gold-l; letter-spacing:8px; } }
 .dt-time-wrap { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:24px;
   .dt-time-label { font-family:'Sarabun',sans-serif; font-size:.85rem; color:rgba(255,255,255,.6); letter-spacing:2px; }
-  .dt-time { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3rem);
-    color:$gold-l; font-weight:400; letter-spacing:4px; } }
+  .dt-time { font-family:'Cinzel',serif; font-size:clamp(1.8rem,5.5vw,2.8rem);
+    color:$gold-l; font-weight:400; letter-spacing:2px; } }
 .dt-venue {
   display:inline-flex; align-items:flex-start; gap:12px; text-align:left;
   background:rgba(255,255,255,.08); border:1px solid rgba($gold,.3); border-radius:12px; padding:16px 22px;
@@ -550,7 +572,7 @@ $text:   #3d2b1f;
   border-bottom:1px solid rgba($red,.1);
   &:last-child { border-bottom:none; }
   .sched-icon { font-size:1.3rem; text-align:center; }
-  .sched-time { font-family:'Cormorant Garamond',serif; font-size:1rem; color:$gold; font-weight:600; white-space:nowrap; }
+  .sched-time { font-family:'Cinzel',serif; font-size:.88rem; color:$gold; font-weight:600; white-space:nowrap; }
   .sched-line { width:1px; height:100%; background:rgba($red,.2); margin:0 4px; }
   .sched-event { font-family:'Sarabun',sans-serif; font-size:.9rem; color:$dark; }
 }
@@ -559,26 +581,54 @@ $text:   #3d2b1f;
 // ══════════════════════════════════════════════════════════════
 //  SECTION 7: MAP
 // ══════════════════════════════════════════════════════════════
-.map-section { padding:56px 24px; background:#fff; }
-.map-content {
-  display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:800px; margin:0 auto;
-  animation: fadeUp 0.6s ease 0.2s both;
-  @media(max-width:640px){ grid-template-columns:1fr; }
+.map-section { padding:56px 24px; background:linear-gradient(160deg,#fdf6ec 0%,#fff 60%,#fef8f4 100%); }
+.map-card {
+  max-width:660px; margin:0 auto; border-radius:18px; overflow:hidden;
+  border:1px solid rgba($gold,.25);
+  box-shadow:0 10px 48px rgba(0,0,0,.09), 0 0 0 1px rgba($gold,.08);
+  animation:fadeUp 0.6s ease 0.2s both;
 }
-.map-info { display:flex; flex-direction:column; gap:10px; justify-content:center; }
-.map-venue-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:$dark; font-weight:600; }
-.map-detail { font-family:'Sarabun',sans-serif; font-size:.9rem; color:$red; font-weight:500; }
-.map-address { font-family:'Sarabun',sans-serif; font-size:.85rem; color:#888; line-height:1.7; }
+.map-venue-header {
+  text-align:center; padding:28px 24px 20px;
+  background:linear-gradient(160deg,$red-d 0%,$red 55%,#a93226 100%);
+  position:relative;
+  &::after { content:''; position:absolute; bottom:0; left:10%; right:10%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba($gold,.6),transparent); }
+}
+.map-pin-icon { font-size:1.5rem; display:block; margin-bottom:8px; }
+.map-venue-title {
+  font-family:'Cinzel',serif; font-size:clamp(.82rem,2.6vw,1.08rem);
+  color:#fff; font-weight:600; letter-spacing:1.5px; margin-bottom:7px; line-height:1.7;
+  text-shadow:0 1px 10px rgba(0,0,0,.35);
+}
+.map-venue-sub {
+  font-family:'Noto Serif Thai','Sarabun',sans-serif;
+  font-size:.82rem; color:rgba($gold-l,.9); letter-spacing:1px;
+}
+.map-rule {
+  text-align:center; padding:14px 0 2px; color:$gold;
+  font-size:.8rem; letter-spacing:10px; position:relative; background:#fff;
+  &::before,&::after { content:''; position:absolute; top:50%; width:36%; height:1px; }
+  &::before { left:5%; background:linear-gradient(90deg,transparent,rgba($gold,.4)); }
+  &::after  { right:5%; background:linear-gradient(270deg,transparent,rgba($gold,.4)); }
+}
+.map-address-block {
+  font-family:'Sarabun',sans-serif; font-size:.85rem; color:#999;
+  text-align:center; padding:8px 28px 20px; line-height:2; background:#fff;
+}
+.map-embed {
+  border-top:1px solid rgba($gold,.14);
+  iframe { display:block; }
+}
+.map-btn-wrap { text-align:center; padding:18px 24px; background:#fff; }
 .map-btn {
-  display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+  display:inline-flex; align-items:center; gap:8px;
   font-family:'Sarabun',sans-serif; font-size:.9rem;
   background:linear-gradient(135deg,$red,$red-d); color:#fff;
   border:none; border-radius:8px; padding:10px 22px; cursor:pointer;
   box-shadow:0 4px 16px rgba($red,.35); transition:transform .2s, box-shadow .2s;
   &:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba($red,.45); }
 }
-.map-embed { border-radius:12px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.12);
-  iframe { display:block; } }
 
 // ══════════════════════════════════════════════════════════════
 //  SECTION 8: PRE-WEDDING
@@ -689,8 +739,8 @@ $text:   #3d2b1f;
 }
 .slide-date-badge {
   position:absolute; bottom:18px; right:20px;
-  font-family:'Cormorant Garamond',serif; font-size:.8rem;
-  color:rgba(255,255,255,.65); letter-spacing:4px; opacity:0;
+  font-family:'Cinzel',serif; font-size:.7rem;
+  color:rgba(255,255,255,.65); letter-spacing:2px; opacity:0;
   text-shadow:0 1px 6px rgba(0,0,0,.5);
 }
 
@@ -739,12 +789,20 @@ $text:   #3d2b1f;
 // ══════════════════════════════════════════════════════════════
 .wedding-footer {
   background:linear-gradient(135deg,$red-d,$red); color:#fff;
-  text-align:center; padding:44px 24px;
+  text-align:center; padding:44px 24px 52px;
   .footer-ornament { font-size:1.2rem; color:$gold-l; letter-spacing:8px; margin:8px 0; }
-  .footer-quote { font-family:'Dancing Script',cursive; font-size:1.8rem;
-    color:rgba(255,255,255,.9); margin:12px 0 8px; font-style:italic; }
-  .footer-names { font-family:'Sarabun',sans-serif; font-size:.9rem;
-    letter-spacing:3px; color:rgba(255,255,255,.7); margin-bottom:16px; }
+  .footer-quote {
+    font-family:'Noto Serif Thai','Sarabun',sans-serif;
+    font-size:clamp(.88rem,2.8vw,1.05rem);
+    color:rgba(255,255,255,.9); margin:14px 0 6px;
+    line-height:2; letter-spacing:.5px;
+  }
+}
+.footer-qr {
+  width:148px; height:148px; margin:10px auto 18px;
+  background:#fff; border-radius:14px; padding:10px;
+  box-shadow:0 6px 28px rgba(0,0,0,.45), 0 0 0 3px rgba($gold,.42);
+  .qr-svg { width:100%; height:100%; display:block; }
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -975,6 +1033,15 @@ $text:   #3d2b1f;
 }
 
 // ══════════════════════════════════════════════════════════════
+//  FLORAL DECORATION (envelope flap)
+// ══════════════════════════════════════════════════════════════
+.env-floral-deco {
+  position:absolute; bottom:0; left:0;
+  width:80%; height:95%; pointer-events:none; z-index:0;
+  .env-floral-svg { width:100%; height:100%; display:block; }
+}
+
+// ══════════════════════════════════════════════════════════════
 //  RESPONSIVE
 // ══════════════════════════════════════════════════════════════
 @media(max-width:768px) {
@@ -987,8 +1054,8 @@ $text:   #3d2b1f;
 
 @media(max-width:480px) {
   .envelope-screen { gap:8px; }
-  .ribbon-bow-wrap { margin-bottom:-24px;
-    .ribbon-bow-svg { width:clamp(130px,46vw,200px); } }
+  .ribbon-bow-wrap { margin-bottom:-88px; margin-top:0;
+    .ribbon-bow-svg { width:clamp(96px,30vw,140px); } }
   .oval-frame { width:clamp(340px,97vw,450px); height:clamp(390px,111vw,517px); }
   .env-container { width:clamp(265px,88vw,370px); height:clamp(185px,61.6vw,259px); }
   .env-stamp { width:30px; height:38px; }

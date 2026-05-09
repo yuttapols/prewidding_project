@@ -107,49 +107,85 @@
     </svg>
   </div>
 
-  <div class="env-title-block" [class.faded]="envelopeState !== 'closed'">
-    <p class="env-pre-text">คุณได้รับ</p>
-    <h2 class="env-title-text">การ์ดเชิญงานมงคลสมรส</h2>
-  </div>
-
   <div class="env-card-area">
+    <!-- Title overlay on bow -->
+    <div class="env-title-block" [class.faded]="envelopeState !== 'closed'">
+      <p class="env-pre-text">คุณได้รับ</p>
+      <h2 class="env-title-text">การ์ดเชิญงานมงคลสมรส</h2>
+    </div>
+
     <!-- Bow -->
     <div class="ribbon-bow-wrap" [class.faded]="envelopeState !== 'closed'">
-      <svg viewBox="0 0 240 150" class="ribbon-bow-svg" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 280 248" class="ribbon-bow-svg" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="bL" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#f07060"/>
-            <stop offset="45%" stop-color="#c0392b"/>
-            <stop offset="100%" stop-color="#7b1c1c"/>
-          </linearGradient>
-          <linearGradient id="bR" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f07060"/>
-            <stop offset="45%" stop-color="#c0392b"/>
-            <stop offset="100%" stop-color="#7b1c1c"/>
-          </linearGradient>
-          <radialGradient id="bK" cx="38%" cy="28%" r="70%">
-            <stop offset="0%" stop-color="#e8665a"/>
-            <stop offset="100%" stop-color="#5a0e0e"/>
+          <radialGradient id="gWL" cx="28%" cy="24%" r="66%">
+            <stop offset="0%"   stop-color="#c44858"/>
+            <stop offset="38%"  stop-color="#7a1525"/>
+            <stop offset="100%" stop-color="#350508"/>
           </radialGradient>
-          <filter id="bShad" x="-15%" y="-15%" width="130%" height="150%">
-            <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="rgba(80,0,0,0.35)"/>
+          <radialGradient id="gWR" cx="72%" cy="24%" r="66%">
+            <stop offset="0%"   stop-color="#c44858"/>
+            <stop offset="38%"  stop-color="#7a1525"/>
+            <stop offset="100%" stop-color="#350508"/>
+          </radialGradient>
+          <radialGradient id="gKN" cx="36%" cy="30%" r="68%">
+            <stop offset="0%"   stop-color="#d45068"/>
+            <stop offset="100%" stop-color="#250408"/>
+          </radialGradient>
+          <linearGradient id="gTL" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#250408"/>
+            <stop offset="28%"  stop-color="#7a1525"/>
+            <stop offset="55%"  stop-color="#a02535"/>
+            <stop offset="82%"  stop-color="#7a1525"/>
+            <stop offset="100%" stop-color="#250408"/>
+          </linearGradient>
+          <linearGradient id="gTR" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%"   stop-color="#250408"/>
+            <stop offset="28%"  stop-color="#7a1525"/>
+            <stop offset="55%"  stop-color="#a02535"/>
+            <stop offset="82%"  stop-color="#7a1525"/>
+            <stop offset="100%" stop-color="#250408"/>
+          </linearGradient>
+          <filter id="fBow" x="-16%" y="-8%" width="132%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="rgba(35,0,6,.58)"/>
           </filter>
         </defs>
-        <g filter="url(#bShad)">
-          <path d="M120,70 C108,48 68,20 22,33 C2,40 2,70 32,76 C68,83 102,77 120,70 Z" fill="url(#bL)"/>
-          <path d="M120,70 C110,57 80,38 50,42 C30,45 22,58 36,67 C60,80 102,76 120,70 Z" fill="rgba(255,155,130,0.22)"/>
-          <path d="M120,70 C132,48 172,20 218,33 C238,40 238,70 208,76 C172,83 138,77 120,70 Z" fill="url(#bR)"/>
-          <path d="M120,70 C130,57 160,38 190,42 C210,45 218,58 204,67 C180,80 138,76 120,70 Z" fill="rgba(255,155,130,0.22)"/>
-          <path d="M114,80 Q96,114 78,148" stroke="url(#bL)" stroke-width="14" fill="none" stroke-linecap="round"/>
-          <path d="M126,80 Q144,114 162,148" stroke="url(#bR)" stroke-width="14" fill="none" stroke-linecap="round"/>
-          <ellipse cx="120" cy="72" rx="16" ry="19" fill="url(#bK)"/>
-          <ellipse cx="115" cy="65" rx="6" ry="4" fill="rgba(255,200,185,0.4)"/>
+        <g filter="url(#fBow)">
+          <!-- Left wing -->
+          <path d="M140,118 C130,92 108,54 60,34 C20,18 2,46 6,76 C10,108 52,124 98,126 C120,128 136,124 140,118 Z"
+                fill="url(#gWL)"/>
+          <path d="M140,118 C134,100 116,70 84,54 C57,42 38,52 40,70 C42,90 72,108 108,116 C126,120 137,120 140,118 Z"
+                fill="rgba(220,110,130,0.2)"/>
+          <path d="M140,118 C126,106 96,88 72,82"
+                stroke="rgba(18,0,4,0.22)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Right wing -->
+          <path d="M140,118 C150,92 172,54 220,34 C260,18 278,46 274,76 C270,108 228,124 182,126 C160,128 144,124 140,118 Z"
+                fill="url(#gWR)"/>
+          <path d="M140,118 C146,100 164,70 196,54 C223,42 242,52 240,70 C238,90 208,108 172,116 C154,120 143,120 140,118 Z"
+                fill="rgba(220,110,130,0.2)"/>
+          <path d="M140,118 C154,106 184,88 208,82"
+                stroke="rgba(18,0,4,0.22)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Left tail -->
+          <path d="M124,132 Q108,172 94,238"
+                stroke="url(#gTL)" stroke-width="34" fill="none" stroke-linecap="round"/>
+          <path d="M124,132 Q108,172 94,238"
+                stroke="rgba(190,75,95,0.2)" stroke-width="18" fill="none" stroke-linecap="round"/>
+          <!-- Right tail -->
+          <path d="M156,132 Q172,172 186,238"
+                stroke="url(#gTR)" stroke-width="34" fill="none" stroke-linecap="round"/>
+          <path d="M156,132 Q172,172 186,238"
+                stroke="rgba(190,75,95,0.2)" stroke-width="18" fill="none" stroke-linecap="round"/>
+          <!-- Center knot -->
+          <rect x="120" y="108" width="40" height="26" rx="7" fill="url(#gKN)"/>
+          <ellipse cx="133" cy="116" rx="10" ry="6"
+                   fill="rgba(255,168,185,0.3)" transform="rotate(-18,133,116)"/>
         </g>
       </svg>
     </div>
 
     <!-- Oval frame -->
     <div class="oval-frame">
+
       <div class="env-container"
            [class.is-opening]="envelopeState === 'opening'"
            [class.is-revealed]="envelopeState === 'breathing'"
@@ -161,32 +197,37 @@
             <svg viewBox="0 0 44 55" class="stamp-svg" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <radialGradient id="sH" cx="38%" cy="30%" r="65%">
-                  <stop offset="0%" stop-color="#ff7070"/>
-                  <stop offset="55%" stop-color="#c0392b"/>
-                  <stop offset="100%" stop-color="#7b1c1c"/>
+                  <stop offset="0%" stop-color="#ff88b8"/>
+                  <stop offset="55%" stop-color="#c0508a"/>
+                  <stop offset="100%" stop-color="#7b1c58"/>
                 </radialGradient>
               </defs>
-              <rect x="1" y="2" width="42" height="53" rx="2" fill="rgba(100,30,10,0.18)"/>
-              <rect x="0" y="0" width="42" height="53" rx="2" fill="#fffaf6"/>
-              <rect x="0" y="0" width="42" height="13" rx="2" fill="#b03025"/>
+              <rect x="1" y="2" width="42" height="53" rx="2" fill="rgba(100,30,60,0.1)"/>
+              <rect x="0" y="0" width="42" height="53" rx="2" fill="#fff8fb"/>
+              <rect x="0" y="0" width="42" height="13" rx="2" fill="#c05080"/>
               <rect x="0" y="0" width="42" height="53" rx="2" fill="none"
-                    stroke="rgba(140,50,20,0.5)" stroke-width="1.2" stroke-dasharray="2.5,2"/>
+                    stroke="rgba(180,80,130,0.42)" stroke-width="1.2" stroke-dasharray="2.5,2"/>
               <text x="21" y="9.5" text-anchor="middle" font-family="Georgia,serif"
-                    font-size="4.5" fill="rgba(255,235,215,0.95)" letter-spacing="0.8">THAILAND</text>
+                    font-size="4.5" fill="rgba(255,235,245,0.95)" letter-spacing="0.8">THAILAND</text>
               <path d="M21,37 C21,27 13,22 9,26 C5,30 8,38 21,48 C34,38 37,30 33,26 C29,22 21,27 21,37 Z"
                     fill="url(#sH)" transform="scale(0.76) translate(5.5, 0)"/>
-              <ellipse cx="14" cy="27" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.3)"
+              <ellipse cx="14" cy="27" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.32)"
                        transform="rotate(-35,14,27)"/>
               <text x="21" y="51" text-anchor="middle" font-family="Georgia,serif"
-                    font-size="5" fill="#8b3020" font-weight="bold">฿ 14</text>
+                    font-size="5" fill="#8b2055" font-weight="bold">฿ 14</text>
             </svg>
           </div>
         </div>
 
         <div class="env-inner-card">
+          <div class="inner-card-corner ic-tl">✦</div>
+          <div class="inner-card-corner ic-tr">✦</div>
+          <div class="inner-card-corner ic-bl">✦</div>
+          <div class="inner-card-corner ic-br">✦</div>
           <div class="inner-card-content">
-            <div class="inner-ornament">✦ ✦ ✦</div>
-            <div class="inner-names">{{ groomNickname }} ♥ {{ brideNickname }}</div>
+            <div class="inner-ornament">❧ ♥ ❧</div>
+            <div class="inner-names">{{ brideNickname }} ♥ {{ groomNickname }}</div>
+            <div class="inner-rule"></div>
             <div class="inner-sub">มงคลสมรส</div>
             <div class="inner-date">10 · 07 · 2569</div>
           </div>
@@ -195,6 +236,84 @@
         <div class="env-lower"></div>
 
         <div class="env-flap">
+          <!-- Watercolor floral decoration -->
+          <div class="env-floral-deco" aria-hidden="true">
+            <svg class="env-floral-svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+              <!-- Gold metallic stems -->
+              <path d="M0,130 C18,108 38,88 65,68 C82,56 100,44 118,30" stroke="#c8a030" stroke-width="1.8" fill="none" opacity=".52"/>
+              <path d="M5,128 C25,104 50,82 82,60 C100,48 120,36 140,22" stroke="#c8a030" stroke-width="1.2" fill="none" opacity=".4"/>
+              <path d="M0,130 C22,112 48,94 78,72" stroke="#c8a030" stroke-width="1" fill="none" opacity=".38"/>
+              <!-- Gold metallic leaves -->
+              <ellipse cx="32" cy="105" rx="17" ry="6" fill="#c8a030" opacity=".42" transform="rotate(-42,32,105)"/>
+              <ellipse cx="52" cy="88" rx="15" ry="5.5" fill="#d4a820" opacity=".38" transform="rotate(-28,52,88)"/>
+              <ellipse cx="72" cy="68" rx="14" ry="5" fill="#c8a030" opacity=".36" transform="rotate(-15,72,68)"/>
+              <ellipse cx="100" cy="48" rx="13" ry="4.8" fill="#d4a820" opacity=".35" transform="rotate(-5,100,48)"/>
+              <ellipse cx="16" cy="120" rx="13" ry="5" fill="#c8a030" opacity=".38" transform="rotate(-58,16,120)"/>
+              <!-- Green organic leaves -->
+              <ellipse cx="40" cy="84" rx="22" ry="8" fill="#5a8035" opacity=".82" transform="rotate(-38,40,84)"/>
+              <ellipse cx="65" cy="65" rx="20" ry="7.5" fill="#6a9040" opacity=".8" transform="rotate(-24,65,65)"/>
+              <ellipse cx="90" cy="48" rx="18" ry="7" fill="#5a7830" opacity=".78" transform="rotate(-12,90,48)"/>
+              <ellipse cx="22" cy="100" rx="16" ry="6.5" fill="#6a9040" opacity=".76" transform="rotate(-52,22,100)"/>
+              <ellipse cx="115" cy="34" rx="15" ry="6" fill="#5a8035" opacity=".74" transform="rotate(3,115,34)"/>
+              <ellipse cx="140" cy="22" rx="13" ry="5" fill="#6a9040" opacity=".7" transform="rotate(8,140,22)"/>
+              <!-- Large wine/mauve rose — focal point -->
+              <g transform="translate(62,54)">
+                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".88"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#9a3272" opacity=".82" transform="rotate(72)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".82" transform="rotate(144)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#9a3272" opacity=".82" transform="rotate(216)"/>
+                <ellipse rx="17" ry="24" cy="-15" fill="#8b2a62" opacity=".82" transform="rotate(288)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(36)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#6e2054" transform="rotate(108)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(180)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#6e2054" transform="rotate(252)"/>
+                <ellipse rx="10" ry="15" cy="-10" fill="#62184a" transform="rotate(324)"/>
+                <circle r="9" fill="#36081e"/>
+                <ellipse rx="5" ry="3.2" cx="-3" cy="-3" fill="rgba(255,180,210,.28)" transform="rotate(-35)"/>
+              </g>
+              <!-- Large soft pink rose -->
+              <g transform="translate(112,25)">
+                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".88"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f8acba" opacity=".82" transform="rotate(72)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".82" transform="rotate(144)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f8acba" opacity=".82" transform="rotate(216)"/>
+                <ellipse rx="13" ry="18" cy="-12" fill="#f098aa" opacity=".82" transform="rotate(288)"/>
+                <ellipse rx="8" ry="11" cy="-8" fill="#c85e78" transform="rotate(36)"/>
+                <ellipse rx="8" ry="11" cy="-8" fill="#c85e78" transform="rotate(180)"/>
+                <circle r="7.5" fill="#96204e"/>
+                <ellipse rx="3.8" ry="2.4" cx="-2.8" cy="-2.8" fill="rgba(255,200,215,.3)" transform="rotate(-35)"/>
+              </g>
+              <!-- Peach/orange accent flower -->
+              <g transform="translate(20,68)">
+                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".88"/>
+                <ellipse rx="9" ry="13" cy="-9" fill="#f0a060" opacity=".82" transform="rotate(72)"/>
+                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".82" transform="rotate(144)"/>
+                <ellipse rx="9" ry="13" cy="-9" fill="#f0a060" opacity=".82" transform="rotate(216)"/>
+                <ellipse rx="9" ry="13" cy="-9" fill="#e89050" opacity=".82" transform="rotate(288)"/>
+                <circle r="6" fill="#b05822"/>
+              </g>
+              <!-- Cream/white rose bud -->
+              <g transform="translate(92,72)">
+                <ellipse rx="8" ry="11" cy="-8" fill="#f5ead8" opacity=".88"/>
+                <ellipse rx="8" ry="11" cy="-8" fill="#fdf3e8" opacity=".8" transform="rotate(120)"/>
+                <ellipse rx="8" ry="11" cy="-8" fill="#f5ead8" opacity=".8" transform="rotate(240)"/>
+                <circle r="5.5" fill="#d8c0a0"/>
+              </g>
+              <!-- Small peach bud -->
+              <g transform="translate(148,48)">
+                <ellipse rx="7" ry="10" cy="-7" fill="#f0c09a" opacity=".85"/>
+                <ellipse rx="7" ry="10" cy="-7" fill="#f8cca8" opacity=".78" transform="rotate(120)"/>
+                <ellipse rx="7" ry="10" cy="-7" fill="#f0c09a" opacity=".78" transform="rotate(240)"/>
+                <circle r="5" fill="#d09060"/>
+              </g>
+              <!-- Gold berries -->
+              <circle cx="80" cy="85" r="3.2" fill="#c8a030" opacity=".58"/>
+              <circle cx="86" cy="90" r="2.8" fill="#d4a820" opacity=".5"/>
+              <circle cx="75" cy="92" r="2.2" fill="#b89020" opacity=".48"/>
+              <circle cx="138" cy="68" r="2.8" fill="#c8a030" opacity=".52"/>
+              <circle cx="145" cy="74" r="2.3" fill="#d4a820" opacity=".46"/>
+            </svg>
+          </div>
           <div class="env-seal">
             <svg viewBox="0 0 60 60" class="seal-angel-svg" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -204,27 +323,27 @@
                   <stop offset="100%" stop-color="#8a6000"/>
                 </radialGradient>
                 <radialGradient id="sgHrt" cx="38%" cy="32%" r="65%">
-                  <stop offset="0%" stop-color="#ff7575"/>
-                  <stop offset="55%" stop-color="#c0392b"/>
-                  <stop offset="100%" stop-color="#7b1c1c"/>
+                  <stop offset="0%" stop-color="#ff88b8"/>
+                  <stop offset="55%" stop-color="#c0508a"/>
+                  <stop offset="100%" stop-color="#7b1c58"/>
                 </radialGradient>
                 <filter id="sgShad">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.5)"/>
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.45)"/>
                 </filter>
               </defs>
               <g filter="url(#sgShad)">
                 <circle cx="30" cy="30" r="27" fill="url(#sgRing)"/>
                 <circle cx="30" cy="30" r="27" fill="none"
                         stroke="rgba(255,235,80,0.55)" stroke-width="1.5" stroke-dasharray="4,3"/>
-                <circle cx="30" cy="30" r="20" fill="#c0392b"/>
+                <circle cx="30" cy="30" r="20" fill="#c0508a"/>
                 <circle cx="30" cy="30" r="20" fill="none"
-                        stroke="rgba(255,200,80,0.3)" stroke-width="0.8"/>
+                        stroke="rgba(255,200,220,0.3)" stroke-width="0.8"/>
                 <path d="M30,28 C30,20 22,15 17,20 C12,25 16,35 30,45 C44,35 48,25 43,20 C38,15 30,20 30,28 Z"
-                      fill="#2a0808" opacity="0.3" transform="translate(1,2)"/>
+                      fill="#1a0822" opacity="0.3" transform="translate(1,2)"/>
                 <path d="M30,28 C30,20 22,15 17,20 C12,25 16,35 30,45 C44,35 48,25 43,20 C38,15 30,20 30,28 Z"
                       fill="url(#sgHrt)"/>
                 <path d="M30,28 C30,22 24,18 20,22 C16,26 19,34 30,43 C41,34 44,26 40,22 C36,18 30,22 30,28 Z"
-                      fill="#e74c3c" opacity="0.5"/>
+                      fill="#e87ab8" opacity="0.5"/>
                 <ellipse cx="23" cy="21" rx="5" ry="3.5"
                          fill="rgba(255,255,255,0.32)" transform="rotate(-35,23,21)"/>
                 <circle cx="30" cy="4.5" r="1.5" fill="rgba(255,235,80,0.75)"/>
@@ -249,7 +368,7 @@
   <div class="reveal-overlay" [class.visible]="showRevealText">
     <div class="reveal-ornament">✦ ♥ ✦</div>
     <h2 class="reveal-main-text">แต่งแล้วเด้อ!</h2>
-    <p class="reveal-couple">{{ groomNickname }} ♥ {{ brideNickname }}</p>
+    <p class="reveal-couple">{{ brideNickname }} ♥ {{ groomNickname }}</p>
   </div>
 </div>
 
@@ -290,7 +409,7 @@
     </svg>
   </div>
   <div class="breathing-text">
-    <p class="breath-names">{{ groomNickname }} ♥ {{ brideNickname }}</p>
+    <p class="breath-names">{{ brideNickname }} ♥ {{ groomNickname }}</p>
     <p class="breath-sub">มงคลสมรส · 10 กรกฎาคม 2569</p>
   </div>
 </div>
@@ -321,22 +440,22 @@
           <line x1="128" y1="45" x2="170" y2="45" stroke="url(#mgGold)" stroke-width="1" opacity="0.7"/>
           <circle cx="90" cy="45" r="36" fill="none" stroke="url(#mgGold)" stroke-width="1" opacity="0.5"/>
           <circle cx="90" cy="45" r="30" fill="none" stroke="url(#mgGold)" stroke-width="0.5" opacity="0.3"/>
-          <!-- Letter B (แบงค์) -->
+          <!-- Letter A (แอน) - เจ้าสาว -->
           <text x="62" y="58" font-family="Noto Serif Thai, serif" font-size="38"
-                font-weight="600" fill="url(#mgGold)" text-anchor="middle">บ</text>
+                font-weight="600" fill="url(#mgGold)" text-anchor="middle">อ</text>
           <!-- Ampersand -->
           <text x="90" y="55" font-family="Cormorant Garamond, serif" font-size="22"
                 font-style="italic" fill="rgba(255,255,255,0.6)" text-anchor="middle">&amp;</text>
-          <!-- Letter A (แอน) -->
+          <!-- Letter B (แบงค์) - เจ้าบ่าว -->
           <text x="118" y="58" font-family="Noto Serif Thai, serif" font-size="38"
-                font-weight="600" fill="url(#mgGold)" text-anchor="middle">อ</text>
+                font-weight="600" fill="url(#mgGold)" text-anchor="middle">บ</text>
         </svg>
       </div>
       <p class="hero-pre">เรียนเชิญร่วมงาน</p>
       <h1 class="hero-names">
-        <span class="hero-name-groom">{{ groomNickname }}</span>
-        <span class="hero-heart">♥</span>
         <span class="hero-name-bride">{{ brideNickname }}</span>
+        <span class="hero-heart">♥</span>
+        <span class="hero-name-groom">{{ groomNickname }}</span>
       </h1>
       <p class="hero-label">มงคลสมรส</p>
       <div class="hero-date-line">10 · 07 · 2569</div>
@@ -348,8 +467,6 @@
            [style.background-image]="getMusicBg()">
     <div class="music-bg-overlay"></div>
     <div class="music-content">
-      <p class="music-label">เพลงประกอบงาน</p>
-      <h2 class="music-title">บุญผลา</h2>
       <div class="music-player-ui" (click)="toggleMusic()" [class.has-error]="musicError">
         <div class="music-disc" [class.spinning]="isMusicPlaying">
           <div class="disc-inner">
@@ -374,7 +491,7 @@
   <section class="dress-section" id="sec-dress" data-animate>
     <div class="section-header">
       <span class="ornament">✦</span>
-      <h2 class="section-title">การแต่งกาย</h2>
+      <h2 class="section-title">ธีมงานแต่ง</h2>
       <span class="ornament">✦</span>
     </div>
     <div class="dress-theme">
@@ -395,27 +512,12 @@
     <div class="floral-side fl-r" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="section-header">
       <span class="ornament">✦</span>
-      <h2 class="section-title">เจ้าบ่าว & เจ้าสาว</h2>
+      <h2 class="section-title">เจ้าสาว & เจ้าบ่าว</h2>
       <span class="ornament">✦</span>
     </div>
     <div class="couple-cards">
-      <!-- Groom -->
-      <div class="person-card slide-left">
-        <div class="person-photo-wrap">
-          <img src="assets/new4.jpg" alt="เจ้าบ่าว" class="person-photo"/>
-          <div class="photo-badge groom-badge">เจ้าบ่าว</div>
-        </div>
-        <div class="person-info">
-          <h3 class="person-fullname">{{ groomName }}</h3>
-          <p class="person-nick">" {{ groomNickname }} "</p>
-        </div>
-      </div>
-      <!-- Heart -->
-      <div class="couple-heart">
-        <span class="big-heart">♥</span>
-      </div>
       <!-- Bride -->
-      <div class="person-card slide-right">
+      <div class="person-card slide-left">
         <div class="person-photo-wrap">
           <img src="assets/new6.jpg" alt="เจ้าสาว" class="person-photo"/>
           <div class="photo-badge bride-badge">เจ้าสาว</div>
@@ -423,6 +525,21 @@
         <div class="person-info">
           <h3 class="person-fullname">{{ brideName }}</h3>
           <p class="person-nick">" {{ brideNickname }} "</p>
+        </div>
+      </div>
+      <!-- Heart -->
+      <div class="couple-heart">
+        <span class="big-heart">♥</span>
+      </div>
+      <!-- Groom -->
+      <div class="person-card slide-right">
+        <div class="person-photo-wrap">
+          <img src="assets/new4.jpg" alt="เจ้าบ่าว" class="person-photo"/>
+          <div class="photo-badge groom-badge">เจ้าบ่าว</div>
+        </div>
+        <div class="person-info">
+          <h3 class="person-fullname">{{ groomName }}</h3>
+          <p class="person-nick">" {{ groomNickname }} "</p>
         </div>
       </div>
     </div>
@@ -439,13 +556,13 @@
     </div>
     <div class="family-grid">
       <div class="family-side">
-        <div class="family-side-label">ฝ่ายชาย</div>
-        <p class="family-member" *ngFor="let m of groomFamily">{{ m }}</p>
+        <div class="family-side-label">ฝ่ายหญิง</div>
+        <p class="family-member" *ngFor="let m of brideFamily">{{ m }}</p>
       </div>
       <div class="family-heart">♥</div>
       <div class="family-side">
-        <div class="family-side-label">ฝ่ายหญิง</div>
-        <p class="family-member" *ngFor="let m of brideFamily">{{ m }}</p>
+        <div class="family-side-label">ฝ่ายชาย</div>
+        <p class="family-member" *ngFor="let m of groomFamily">{{ m }}</p>
       </div>
     </div>
   </section>
@@ -465,13 +582,6 @@
         <span class="dt-time-label">เวลา</span>
         <span class="dt-time">{{ weddingTime }}</span>
         <span class="dt-time-label">เป็นต้นไป</span>
-      </div>
-      <div class="dt-venue slide-up delay-4">
-        <span class="dt-venue-icon">📍</span>
-        <div>
-          <strong>{{ venue }}</strong>
-          <p>{{ venueDetail }}</p>
-        </div>
       </div>
     </div>
   </section>
@@ -502,21 +612,25 @@
       <h2 class="section-title">สถานที่จัดงาน</h2>
       <span class="ornament">✦</span>
     </div>
-    <div class="map-content">
-      <div class="map-info">
-        <div class="map-venue-name">{{ venue }}</div>
-        <div class="map-detail">{{ venueDetail }}</div>
-        <div class="map-address">{{ venueAddress }}</div>
-        <button class="map-btn" (click)="openMap()">
-          <span>🗺</span> ดูแผนที่ใน Google Maps
-        </button>
+    <div class="map-card">
+      <div class="map-venue-header">
+        <span class="map-pin-icon">📍</span>
+        <div class="map-venue-title">{{ venue }}</div>
+        <div class="map-venue-sub">{{ venueDetail }}</div>
       </div>
+      <div class="map-rule"><span>✦</span></div>
+      <div class="map-address-block">{{ venueAddress }}</div>
       <div class="map-embed">
         <iframe
           src="https://maps.google.com/maps?q=16.0417031,102.7434672&z=17&output=embed"
-          width="100%" height="280" style="border:0;" allowfullscreen loading="lazy"
+          width="100%" height="260" style="border:0;" allowfullscreen loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
+      </div>
+      <div class="map-btn-wrap">
+        <button class="map-btn" (click)="openMap()">
+          <span>🗺</span> ดูแผนที่ใน Google Maps
+        </button>
       </div>
     </div>
   </section>
@@ -557,9 +671,9 @@
              [class.prev]="i === (currentSlide - 1 + slideImages.length) % slideImages.length">
           <img [src]="img" [alt]="'Gallery ' + (i+1)" class="slide-img"/>
           <div class="slide-caption">
-            <span class="caption-name caption-left">{{ groomNickname }}</span>
+            <span class="caption-name caption-left">{{ brideNickname }}</span>
             <span class="caption-heart">♥</span>
-            <span class="caption-name caption-right">{{ brideNickname }}</span>
+            <span class="caption-name caption-right">{{ groomNickname }}</span>
           </div>
           <div class="slide-date-badge">10 · 07 · 2569</div>
         </div>
@@ -578,8 +692,85 @@
   <!-- ── FOOTER ── -->
   <footer class="wedding-footer">
     <div class="footer-ornament">❧ ♥ ❧</div>
-    <p class="footer-quote">" ขอบคุณทุกท่าน ที่มาร่วมงานมงคลสมรส "</p>
-    <p class="footer-names">{{ groomNickname }} &amp; {{ brideNickname }} · 10.07.2569</p>
+    <p class="footer-quote">
+      ร่วมแสดงความยินดีและส่งมอบของขวัญ<br>
+      คู่บ่าวสาวเนื่องในโอกาสพิเศษ<br>
+      ผ่านช่องทาง QR นี้
+    </p>
+    <div class="footer-qr">
+      <svg viewBox="0 0 100 100" class="qr-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- Top-left finder -->
+        <rect x="7" y="7" width="22" height="22" rx="2" fill="#1a0505"/>
+        <rect x="10" y="10" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="13" y="13" width="10" height="10" rx="1" fill="#1a0505"/>
+        <!-- Top-right finder -->
+        <rect x="71" y="7" width="22" height="22" rx="2" fill="#1a0505"/>
+        <rect x="74" y="10" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="77" y="13" width="10" height="10" rx="1" fill="#1a0505"/>
+        <!-- Bottom-left finder -->
+        <rect x="7" y="71" width="22" height="22" rx="2" fill="#1a0505"/>
+        <rect x="10" y="74" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="13" y="77" width="10" height="10" rx="1" fill="#1a0505"/>
+        <!-- Timing dots -->
+        <rect x="33" y="7"  width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="7"  width="3" height="3" fill="#1a0505"/>
+        <rect x="45" y="7"  width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="7"  width="3" height="3" fill="#1a0505"/>
+        <rect x="7"  y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="7"  y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="7"  y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="7"  y="51" width="3" height="3" fill="#1a0505"/>
+        <!-- Data modules -->
+        <rect x="33" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="63" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="33" y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="45" y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="33" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="45" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="63" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="33" y="51" width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="51" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="51" width="3" height="3" fill="#1a0505"/>
+        <rect x="33" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="63" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="63" width="3" height="3" fill="#1a0505"/>
+        <rect x="45" y="63" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="63" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="77" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="33" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="39" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="45" width="3" height="3" fill="#1a0505"/>
+        <rect x="77" y="51" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="51" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="77" y="57" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="63" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="33" y="77" width="3" height="3" fill="#1a0505"/>
+        <rect x="45" y="77" width="3" height="3" fill="#1a0505"/>
+        <rect x="63" y="77" width="3" height="3" fill="#1a0505"/>
+        <rect x="39" y="83" width="3" height="3" fill="#1a0505"/>
+        <rect x="51" y="83" width="3" height="3" fill="#1a0505"/>
+        <rect x="57" y="83" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="71" width="3" height="3" fill="#1a0505"/>
+        <rect x="71" y="83" width="3" height="3" fill="#1a0505"/>
+        <rect x="77" y="77" width="3" height="3" fill="#1a0505"/>
+        <rect x="83" y="83" width="3" height="3" fill="#1a0505"/>
+      </svg>
+    </div>
     <div class="footer-ornament">✦ ✦ ✦</div>
   </footer>
 
@@ -594,6 +785,6 @@
 <!-- ── FIXED MUSIC BUTTON ── -->
 <button class="music-fab" (click)="toggleMusic()"
         [class.playing]="isMusicPlaying" [class.error]="musicError"
-        *ngIf="showInvitation" [title]="musicError ? 'ไม่พบไฟล์เพลง' : (isMusicPlaying ? 'หยุดเพลง' : 'เปิดเพลง')">
+        [title]="musicError ? 'ไม่พบไฟล์เพลง' : (isMusicPlaying ? 'หยุดเพลง' : 'เปิดเพลง')">
   <span class="fab-icon">{{ musicError ? '🔕' : (isMusicPlaying ? '🎵' : '🔇') }}</span>
 </button>
