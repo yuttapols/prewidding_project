@@ -422,75 +422,38 @@ $text:   #3d2b1f;
   position:relative; z-index:1; text-align:center;
   animation: fadeUp 0.7s ease 0.2s both;
 }
-@keyframes spin { to { transform:rotate(360deg) } }
-@keyframes vinyl-glow {
-  0%,100% { box-shadow:0 0 30px rgba($gold,.3), 0 0 60px rgba($red,.2), 0 20px 60px rgba(0,0,0,.6); }
-  50%      { box-shadow:0 0 50px rgba($gold,.5), 0 0 90px rgba($red,.35), 0 20px 60px rgba(0,0,0,.6); }
+@keyframes spin { to{transform:rotate(360deg)} }
+.music-label { font-family:'Sarabun',sans-serif; font-weight:300; font-size:.9rem;
+  color:rgba($gold,.8); letter-spacing:5px; text-transform:uppercase; margin-bottom:8px; }
+.music-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3rem);
+  color:#fff; font-weight:400; margin-bottom:28px; }
+.music-player-ui {
+  display:inline-flex; align-items:center; gap:20px; cursor:pointer;
+  background:rgba(255,255,255,.07); border:1px solid rgba($gold,.3);
+  border-radius:60px; padding:14px 28px;
+  transition:background .3s, transform .2s;
+  &:hover { background:rgba(255,255,255,.12); transform:scale(1.03); }
 }
-
-.vinyl-wrap {
-  display:inline-flex; flex-direction:column; align-items:center; gap:20px;
-  cursor:pointer; padding:8px;
-  transition:transform .3s;
-  &:hover { transform:scale(1.03); }
+.music-disc {
+  width:56px; height:56px; border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,$red,#600);
+  border:3px solid rgba($gold,.5); position:relative; flex-shrink:0;
+  &.spinning { animation:spin 3s linear infinite; }
+  .disc-inner { position:absolute; inset:30%; border-radius:50%; background:#1a0505;
+    display:flex; align-items:center; justify-content:center; }
+  .disc-note { color:rgba($gold,.8); font-size:.8rem; }
 }
-
-.vinyl-record {
-  position:relative; width:200px; height:200px; border-radius:50%;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255,255,255,.06) 0%, transparent 55%),
-    repeating-radial-gradient(circle at 50% 50%,
-      #1a0a08 0px, #1a0a08 3px,
-      #241010 3px, #241010 5px,
-      #1e0c0a 5px, #1e0c0a 7px
-    );
-  border:2px solid rgba($gold,.35);
-  box-shadow:0 0 30px rgba($gold,.3), 0 0 60px rgba($red,.2), 0 20px 60px rgba(0,0,0,.6);
-  flex-shrink:0;
-  &.spinning { animation:spin 4s linear infinite, vinyl-glow 2s ease-in-out infinite; }
-  &.error { opacity:.5; filter:grayscale(1); }
-}
-
-.vinyl-groove {
-  position:absolute; border-radius:50%; border:1px solid rgba(255,255,255,.06); top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  &.v1 { width:176px; height:176px; }
-  &.v2 { width:152px; height:152px; }
-  &.v3 { width:128px; height:128px; }
-  &.v4 { width:104px; height:104px; }
-  &.v5 { width:82px;  height:82px;  }
-}
-
-.vinyl-center-label {
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:72px; height:72px; border-radius:50%;
-  background:radial-gradient(circle at 38% 32%, #c44858, $red-d 60%, #250408);
-  border:1.5px solid rgba($gold,.6);
-  box-shadow:0 2px 12px rgba(0,0,0,.5);
-  display:flex; align-items:center; justify-content:center;
-}
-.vinyl-label-inner {
-  display:flex; flex-direction:column; align-items:center; gap:2px;
-}
-.vinyl-label-note {
-  font-family:'Sarabun',sans-serif; font-size:.95rem; font-weight:700;
-  color:rgba($gold,.95); letter-spacing:2px;
-  text-shadow:0 0 10px rgba($gold,.6), 0 1px 4px rgba(0,0,0,.7);
-}
-
-.vinyl-btn {
-  width:48px; height:48px; border-radius:50%;
-  background:linear-gradient(135deg, rgba($red,.8), rgba($red-d,.9));
-  border:1.5px solid rgba($gold,.5);
-  display:flex; align-items:center; justify-content:center;
+.music-btn-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.music-play-btn {
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,$red,$red-d);
+  border:2px solid rgba($gold,.5); display:flex; align-items:center; justify-content:center;
   font-size:1.1rem; color:#fff;
-  box-shadow:0 4px 20px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.15);
-  transition:background .25s, box-shadow .25s, transform .2s;
-  &.playing { background:linear-gradient(135deg,rgba(#c0392b,.9),rgba(#600,.9)); }
-  &.error   { background:rgba(#333,.6); border-color:rgba(#fff,.2); }
+  box-shadow:0 4px 16px rgba(0,0,0,.4);
+  &.playing { background:linear-gradient(135deg,#c0392b,#600); }
 }
 .music-status { font-family:'Sarabun',sans-serif; font-size:.78rem;
-  color:rgba(255,255,255,.6); letter-spacing:1.5px; }
+  color:rgba(255,255,255,.6); letter-spacing:1px; }
 
 // ══════════════════════════════════════════════════════════════
 //  SECTION 3: DRESS CODE
@@ -586,17 +549,17 @@ $text:   #3d2b1f;
 .datetime-content {
   position:relative; z-index:1; text-align:center; max-width:600px; margin:0 auto;
 }
-.dt-label { font-family:'Noto Serif Thai','Sarabun',sans-serif; font-weight:300; font-size:.85rem;
-  color:rgba(255,255,255,.7); letter-spacing:6px; text-transform:uppercase; margin-bottom:12px; }
+.dt-label { font-family:'Noto Serif Thai','Sarabun',sans-serif; font-weight:300; font-size:clamp(1.3rem,4.5vw,2rem);
+  color:rgba(255,255,255,.7); letter-spacing:6px; text-transform:uppercase; margin-bottom:16px; }
 .dt-date { font-family:'Noto Serif Thai','Cormorant Garamond',serif; font-size:clamp(1.3rem,4.5vw,2rem);
-  color:#fff; font-weight:500; margin-bottom:6px; line-height:1.4; }
+  color:#fff; font-weight:500; margin-bottom:14px; line-height:1.4; }
 .dt-date-en { font-family:'Cinzel',serif; font-size:.85rem; color:rgba(255,255,255,.75);
   letter-spacing:1px; margin-bottom:20px; }
 .dt-divider { margin:16px 0;
   .dt-ornament { font-size:1.2rem; color:$gold-l; letter-spacing:8px; } }
 .dt-time-wrap { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:24px;
   .dt-time-label { font-family:'Sarabun',sans-serif; font-size:.85rem; color:rgba(255,255,255,.6); letter-spacing:2px; }
-  .dt-time { font-family:'Cinzel',serif; font-size:clamp(1.8rem,5.5vw,2.8rem);
+  .dt-time { font-family:'Cinzel',serif; font-size:clamp(1.1rem,3vw,1.4rem);
     color:$gold-l; font-weight:400; letter-spacing:2px; } }
 .dt-venue {
   display:inline-flex; align-items:flex-start; gap:12px; text-align:left;
@@ -1193,8 +1156,7 @@ $text:   #3d2b1f;
   }
   .prewedding-grid { grid-template-columns:1fr 1fr;
     .prewedding-card:last-child { grid-column:1/3; } }
-  .vinyl-record { width:170px; height:170px; }
-  .vinyl-groove { &.v1{width:148px;height:148px} &.v2{width:126px;height:126px} &.v3{width:106px;height:106px} &.v4{width:86px;height:86px} &.v5{width:68px;height:68px} }
+  .music-player-ui { flex-direction:column; gap:12px; padding:18px 20px; }
   .slide-arrow { width:38px; height:38px; font-size:1.8rem; }
   .music-fab { bottom:16px; right:16px; width:46px; height:46px; font-size:1.2rem; }
 }

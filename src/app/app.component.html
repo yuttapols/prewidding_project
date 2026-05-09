@@ -360,19 +360,21 @@
            [style.background-image]="getMusicBg()">
     <div class="music-bg-overlay"></div>
     <div class="music-content">
-      <div class="vinyl-wrap" (click)="toggleMusic()" [class.has-error]="musicError">
-        <div class="vinyl-record" [class.spinning]="isMusicPlaying" [class.error]="musicError">
-          <div class="vinyl-groove v1"></div>
-          <div class="vinyl-groove v2"></div>
-          <div class="vinyl-groove v3"></div>
-          <div class="vinyl-groove v4"></div>
-          <div class="vinyl-groove v5"></div>
-          <div class="vinyl-center-label">
-            <div class="vinyl-label-inner">
-              <span class="vinyl-label-note" *ngIf="!musicError">{{ isMusicPlaying ? 'หยุด' : 'เล่น' }}</span>
-              <span class="vinyl-label-note" *ngIf="musicError">✕</span>
-            </div>
+      <div class="music-player-ui" (click)="toggleMusic()" [class.has-error]="musicError">
+        <div class="music-disc" [class.spinning]="isMusicPlaying">
+          <div class="disc-inner">
+            <span class="disc-note">{{ musicError ? '✕' : '♪' }}</span>
           </div>
+        </div>
+        <div class="music-btn-group">
+          <div class="music-play-btn" [class.playing]="isMusicPlaying" [class.error]="musicError">
+            <span *ngIf="!isMusicPlaying && !musicError">▶</span>
+            <span *ngIf="isMusicPlaying">⏸</span>
+            <span *ngIf="musicError">✕</span>
+          </div>
+          <p class="music-status" *ngIf="musicError || isMusicPlaying">
+            {{ musicError ? 'กรุณาเพิ่มไฟล์ music.mp3' : 'กำลังเล่น...' }}
+          </p>
         </div>
       </div>
     </div>
